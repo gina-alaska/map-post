@@ -1,0 +1,15 @@
+%nav.navbar.navbar-default.navbar-static-top
+  .container-fluid
+    - if @member.nil? or not @member.new_record?
+      .navbar-right
+        = link_to new_membership_path, class: 'btn btn-success navbar-btn' do
+          New Member
+          
+    - unless current_page?(memberships_path)
+      = link_to memberships_path, class: 'btn btn-primary navbar-btn' do
+        %i.glyphicon.glyphicon-arrow-left
+        View all
+      
+    - unless @member.nil? or @member.new_record? or current_page?(edit_membership_path(@member))
+      = link_to edit_membership_path(@member), class: 'btn btn-default navbar-btn' do
+        Edit member

@@ -12,6 +12,8 @@ module GinaAuthentication
         @auth = Authorization.create_from_hash(auth_hash, current_user)
       end
     
+      @auth.touch
+      
       # Log the authorizing user in.
       self.current_user = @auth.user
     
@@ -31,7 +33,7 @@ module GinaAuthentication
     end
   
     def failure
-      flash[:notice] = params[:message] # if using sinatra-flash or rack-flash
+      flash[:danger] = params[:message] # if using sinatra-flash or rack-flash
       redirect_to '/'
     end
 

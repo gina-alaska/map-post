@@ -1,15 +1,23 @@
 Rails.application.routes.draw do
-  get '/logout', to: 'sessions#destroy'
-  get '/login', to: redirect('/auth/google')
+  resources :groups
+
+  get '/logout', to: 'sessions#destroy', as: :logout
+  get '/login', to: redirect('/auth/google'), as: :login
   
   get '/auth/:provider/disable', to: 'users#disable_provider'
   post '/auth/:provider/callback', to: 'sessions#create'
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/auth/failure', to: 'sessions#failure'
+
   resources :sessions
   resources :memberships
-
-  resources :users
+  resources :users do
+    member do
+      patch :ban
+      patch :unban
+    end
+  end
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

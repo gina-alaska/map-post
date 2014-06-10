@@ -4,13 +4,13 @@
     # provider :developer unless Rails.env.production?
     provider :google_oauth2, Rails.application.secrets.google_key, Rails.application.secrets.google_secret, {
       name: "google",
-      scope: "email",
+      scope: "userinfo.profile",
       hd: "alaska.edu",
-      include_granted_scopes: true
-      #scope: "email, profile",
+      include_granted_scopes: true,
+      # scope: "userinfo.profile",
       #image_aspect_ratio: "square",
       #image_size: 50,
-      #prompt: 'consent'
+      prompt: 'select_account'
     }
     
     # provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']

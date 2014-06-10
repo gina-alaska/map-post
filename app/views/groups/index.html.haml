@@ -1,0 +1,24 @@
+%table.table.table-bordered.table-striped.table-condensed
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Restricted
+      %th Visible
+      %th.text-right Actions
+  %tbody
+    - @groups.each do |group|
+      %tr
+        %td= link_to group, group
+        %td= group.description
+        %td= group.restricted
+        %td= group.visible
+        %td.text-right
+          .btn-group
+            = link_to group, class: 'btn btn-sm btn-primary' do
+              %i.glyphicon.glyphicon-eye-open
+            = link_to edit_group_path(group), class: 'btn btn-sm btn-default' do
+              %i.glyphicon.glyphicon-edit
+            = link_to group, method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: 'Are you sure?' } do
+              %i.glyphicon.glyphicon-trash
+

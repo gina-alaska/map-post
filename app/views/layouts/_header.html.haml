@@ -1,0 +1,21 @@
+%nav.navbar.navbar-default.navbar-static-top{ style: 'margin-bottom: 0;' }
+  .container-fluid
+    - if signed_in? and current_user.member?
+      %ul.nav.navbar-nav        
+        %li{ class: (controller.class == UsersController  ? 'active' : '') }
+          = link_to users_path do
+            Users
+        %li{ class: (controller.class == MembershipsController ? 'active' : '') }
+          = link_to memberships_path do
+            Permissions
+        %li{ class: (controller.class == GroupsController ? 'active' : '') }
+          = link_to groups_path do
+            Groups
+    .navbar-right
+      - if signed_in?
+        = link_to logout_path, class: 'btn btn-default navbar-btn' do
+          Logout
+      - else
+        = link_to login_path, class: 'btn btn-default navbar-btn' do
+          Login
+= yield 'navbar'

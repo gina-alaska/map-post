@@ -1,0 +1,13 @@
+= form_for @member do |f|
+  .form-group
+    .form-group
+      = f.label :email, class: 'control-label'
+      = f.text_field :email, class: 'form-control'
+    / .form-group
+    /   = f.label :admin, class: 'checkbox' do
+    /     = f.check_box :admin
+    /     Admin?
+          
+    .form-actions.pull-right
+      = link_to 'Cancel', @member, class: 'btn btn-default'
+      = f.submit 'Save', class: 'btn btn-primary'
