@@ -1,0 +1,35 @@
+= form_for(@event) do |f|
+  - if @event.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@event.errors.count, "error")
+        prohibited this event from being saved:
+      %ul
+        - @event.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :description
+    = f.text_area :description, class: 'form-control'
+  .form-group
+    = f.label :group_id
+    = f.collection_select :group_id, Group.available, :id, :to_s, { prompt: 'Select a group' }, { class: 'form-control' }
+  - if current_user.member?
+    .form-group
+      = f.label :visible
+      = f.check_box :visible
+  .form-group
+    = f.label :event_at
+    = f.datetime_select :event_at
+  .actions.pull-right
+    - if @event.new_record?
+      = link_to events_path, class: 'btn btn-default' do
+        %i.glyphicon.glyphicon-arrow-left
+        Cancel
+    - else
+      = link_to @event, class: 'btn btn-default' do
+        %i.glyphicon.glyphicon-arrow-left
+        Cancel  
+    = f.submit class: 'btn btn-primary'

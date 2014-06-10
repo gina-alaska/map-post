@@ -10,11 +10,15 @@
   .row
     .col-lg-2.col-md-3.col-sm-4
       .form-group
-        = f.label :acronym
+        = f.label :acronym do
+          Acronym 
+          %span.text-danger (required)
         = f.text_field :acronym, class: 'form-control'
     .col-lg-10.col-md-9.col-sm-8
       .form-group
-        = f.label :name
+        = f.label :name do
+          Name
+          %span.text-danger (required)
         = f.text_field :name, class: 'form-control'
   .form-group
     = f.label :description

@@ -2,7 +2,6 @@
   %thead
     %tr
       %th Name
-      %th Description
       %th Restricted
       %th Visible
       %th.text-right Actions
@@ -10,7 +9,6 @@
     - @groups.each do |group|
       %tr
         %td= link_to group, group
-        %td= group.description
         %td= group.restricted
         %td= group.visible
         %td.text-right

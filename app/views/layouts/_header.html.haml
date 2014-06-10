@@ -11,6 +11,9 @@
         %li{ class: (controller.class == GroupsController ? 'active' : '') }
           = link_to groups_path do
             Groups
+        %li{ class: (controller.class == EventsController ? 'active' : '') }
+          = link_to events_path do
+            Events
     .navbar-right
       - if signed_in?
         = link_to logout_path, class: 'btn btn-default navbar-btn' do

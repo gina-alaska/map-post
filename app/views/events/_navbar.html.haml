@@ -1,0 +1,15 @@
+%nav.navbar.navbar-default.navbar-static-top
+  .container-fluid
+    - if @event.nil? or not @event.new_record?
+      .navbar-right
+        = link_to new_event_path, class: 'btn btn-success navbar-btn' do
+          New event
+          
+    - unless current_page?(events_path)
+      = link_to events_path, class: 'btn btn-primary navbar-btn' do
+        %i.glyphicon.glyphicon-arrow-left
+        View all
+      
+    - unless @event.nil? or @event.new_record? or current_page?(edit_event_path(@event))
+      = link_to edit_event_path(@event), class: 'btn btn-default navbar-btn' do
+        Edit event

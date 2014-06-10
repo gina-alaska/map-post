@@ -1,0 +1,22 @@
+%p#notice= notice
+%p
+  %strong Title:
+  = @event.title
+%p
+  %strong Description:
+  = @event.description
+%p
+  %strong Group:
+  = @event.group
+%p
+  %strong User:
+  = @event.user
+%p
+  %strong Visible:
+  = @event.visible
+%p
+  %strong Event at:
+  = @event.event_at
+= link_to 'Edit', edit_event_path(@event)
+|
+\#{link_to 'Back', events_path}
