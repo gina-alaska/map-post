@@ -14,7 +14,6 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap/dist/js/bootstrap
-//= require mapbox.js/dist/mapbox
 //= require proj4leaflet/lib/proj4-compressed
 //= require proj4leaflet/src/proj4leaflet
 //= require gina-map-layers/dist/mapbox-adapter

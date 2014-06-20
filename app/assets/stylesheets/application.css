@@ -13,7 +13,6 @@
  *= require_tree .
  *= require bootstrap/dist/css/bootstrap
  *= require font-awesome/css/font-awesome
- *= require mapbox.js/dist/mapbox
  *= require_self
  */
 
