@@ -1,14 +1,17 @@
 %nav.navbar.navbar-default.navbar-static-top
   .container-fluid
     - unless @user.nil?
-      = link_to users_path, class: 'btn btn-primary navbar-btn' do
-        %i.glyphicon.glyphicon-arrow-left
-        View all
+      .btn-group
+        = link_to users_path, class: 'btn btn-primary navbar-btn' do
+          %i.glyphicon.glyphicon-arrow-left
+          View all
         
     - unless @user.nil? or @user.new_record?
       - if @user.banned?
-        = link_to [:unban, @user], method: :patch, class: 'btn btn-danger navbar-btn' do
-          Unban
+        .btn-group
+          = link_to [:unban, @user], method: :patch, class: 'btn btn-danger navbar-btn' do
+            Unban
       - else
-        = link_to [:ban, @user], method: :patch, class: 'btn btn-danger navbar-btn' do
-          Ban
+        .btn-group
+          = link_to [:ban, @user], method: :patch, class: 'btn btn-danger navbar-btn' do
+            Ban
