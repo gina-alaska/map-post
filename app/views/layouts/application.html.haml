@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %title MapPost
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    = render 'layouts/header'
+    = render 'navbar'
+    .container-fluid
+      = render 'layouts/flash_messages'
+      = yield

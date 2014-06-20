@@ -1,0 +1,8 @@
+#map_container
+  #map
+  
+:javascript
+  $(document).one('map:ready', function(e, container) {
+    geojson = MapLayer.fromConfig({ type: 'geojson', url: '/events.geojson' });
+    geojson.addTo(container.map);
+  })
