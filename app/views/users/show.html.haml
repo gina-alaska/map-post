@@ -4,4 +4,7 @@
 
 %dl.dl-horizontal
   %dt # of posts
-  %dd 0
+  %dd= @user.events.count
+
+%h3 Submitted Events
+= render @user.events.order(event_at: :desc)

@@ -9,7 +9,7 @@
     - @users.each do |user|
       %tr
         %td= link_to user, user
-        %td= 0
+        %td= user.events.count
         %td
           - if user.banned?
             = link_to unban_user_path(user, return_to_all: true), method: :patch, class: 'btn btn-sm btn-danger', title: 'Unban' do
