@@ -2,3 +2,7 @@
 
 :markdown
   #{@group.description}
+  
+%h3 Upcoming Events
+
+= render @group.events.visible

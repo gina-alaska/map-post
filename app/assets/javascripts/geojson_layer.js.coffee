@@ -24,7 +24,7 @@ class @GeoJSONLayer extends @MapLayer
                   </div>"
           })); 
         
-        if @config.popup? and @config.popup != '' and @config.options.clickable != 'no'
+        if @config.popup? and @config.popup != ''
           l.bindPopup(L.mapbox.template(@config.popup, l.feature.properties), {
             maxWidth: 500
           });

@@ -5,6 +5,8 @@ class Group < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :acronym, presence: true, uniqueness: true
   
+  has_many :events
+  
   def to_s 
     "#{name} (#{acronym})"
   end

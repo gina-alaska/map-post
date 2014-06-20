@@ -1,12 +1,12 @@
-%dl.dl-horizontal
-  %dt Title
-  %dd= event.title
-  %dt Group
-  %dd= event.group
-  %dt Description
-  %dd= event.description
-  %dt When?
-  %dd= event.event_at
-  %dt Location
-  %dd= link_to 'View map', event
-%hr
+.container
+  %h4{ style: 'margin: 0;' }= event.title
+  %p= event.description
+
+  %dl.dl-horizontal.event
+    %dt Group
+    %dd= event.group
+    %dt When?
+    %dd= event.event_at
+    %dt Location
+    %dd= link_to 'View map', event
+  %hr
