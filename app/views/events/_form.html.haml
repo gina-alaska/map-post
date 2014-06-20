@@ -1,4 +1,8 @@
-= form_for(@event) do |f|
+= bootstrap_form_for(@event) do |f|
+  = f.fields_for :location do |lf|
+    = lf.hidden_field :lat, value: f.object.location.lat.to_s
+    = lf.hidden_field :lng, value: f.object.location.lng.to_s
+  
   - if @event.errors.any?
     #error_explanation
       %h2
@@ -7,29 +11,31 @@
       %ul
         - @event.errors.full_messages.each do |message|
           %li= message
-  .form-group
-    = f.label :title
-    = f.text_field :title, class: 'form-control'
-  .form-group
-    = f.label :description
-    = f.text_area :description, class: 'form-control'
-  .form-group
-    = f.label :group_id
-    = f.collection_select :group_id, Group.available, :id, :to_s, { prompt: 'Select a group' }, { class: 'form-control' }
-  - if current_user.member?
-    .form-group
-      = f.label :visible
-      = f.check_box :visible
-  .form-group
-    = f.label :event_at
-    = f.datetime_select :event_at
-  .actions.pull-right
-    - if @event.new_record?
-      = link_to events_path, class: 'btn btn-default' do
-        %i.glyphicon.glyphicon-arrow-left
-        Cancel
-    - else
-      = link_to @event, class: 'btn btn-default' do
-        %i.glyphicon.glyphicon-arrow-left
-        Cancel  
-    = f.submit class: 'btn btn-primary'
+  .row
+    .col-lg-6.col-md-6.col-sm-6
+      #map{ style: 'height: 400px;'}
+      :javascript
+        $(document).on('map:ready', function(e, container) {
+          var editor = new EventEditor(container, { lat: '#event_location_lat', lng: '#event_location_lng', editable: true })
+        })
+        
+    .col-lg-6.col-md-6.col-sm-6
+
+      = f.text_field :title
+      = f.text_area :description
+      = f.collection_select :group_id, Group.available, :id, :to_s, { prompt: 'Select a group' }
+      
+      - if current_user.member?
+        = f.check_box :visible
+      = f.text_field :event_at
+
+      .form-actions.pull-right
+        - if @event.new_record?
+          = link_to events_path, class: 'btn btn-default' do
+            %i.glyphicon.glyphicon-arrow-left
+            Cancel
+        - else
+          = link_to @event, class: 'btn btn-default' do
+            %i.glyphicon.glyphicon-arrow-left
+            Cancel  
+        = f.submit class: 'btn btn-primary'

@@ -1,22 +1,22 @@
-%p#notice= notice
-%p
-  %strong Title:
-  = @event.title
-%p
-  %strong Description:
-  = @event.description
-%p
-  %strong Group:
-  = @event.group
-%p
-  %strong User:
-  = @event.user
-%p
-  %strong Visible:
-  = @event.visible
-%p
-  %strong Event at:
-  = @event.event_at
-= link_to 'Edit', edit_event_path(@event)
-|
-\#{link_to 'Back', events_path}
+.row
+  .col-lg-6
+    %p
+      %strong Title:
+      = @event.title
+    %p
+      %strong Description:
+      = @event.description
+    %p
+      %strong Group:
+      = @event.group
+    %p
+      %strong Event at:
+      = @event.event_at
+  .col-lg-6
+    #map{ style: 'height: 400px;' }
+    = hidden_field_tag :lat, @event.location.lat, id: 'event_lat'
+    = hidden_field_tag :lng, @event.location.lng, id: 'event_lng'
+    :javascript
+      $(document).on('map:ready', function(e, container) {
+        var editor = new EventEditor(container, { lat: '#event_lat', lng: '#event_lng', editable: false })
+      })

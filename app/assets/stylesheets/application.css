@@ -13,5 +13,21 @@
  *= require_tree .
  *= require bootstrap/dist/css/bootstrap
  *= require font-awesome/css/font-awesome
+ *= require mapbox.js/dist/mapbox
  *= require_self
  */
+
+html,body {
+  width: 100%;
+  height: 100%;
+  padding:0;
+  margin:0;
+}
+
+.floating-flash {
+  width: 400px;
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  margin-left: -200px;
+}

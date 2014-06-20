@@ -1,36 +1,17 @@
-= form_for(@group) do |f|
-  - if @group.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@group.errors.count, "error")
-        prohibited this group from being saved:
-      %ul
-        - @group.errors.full_messages.each do |message|
-          %li= message
+= bootstrap_form_for(@group) do |f|
+  = f.alert_message "Please fix the following errors"
+  
   .row
     .col-lg-2.col-md-3.col-sm-4
-      .form-group
-        = f.label :acronym do
-          Acronym 
-          %span.text-danger (required)
-        = f.text_field :acronym, class: 'form-control'
+      = f.text_field :acronym, class: 'form-control', label: "Acronym <span class='text-danger'>(required)</span>".html_safe
     .col-lg-10.col-md-9.col-sm-8
-      .form-group
-        = f.label :name do
-          Name
-          %span.text-danger (required)
-        = f.text_field :name, class: 'form-control'
-  .form-group
-    = f.label :description
-    = f.text_area :description, class: 'form-control'
-  .form-group
-    %label.checkbox
-      = f.check_box :restricted
-      Restricted
-  .form-group
-    %label.checkbox
-      = f.check_box :visible
-      Visible
+      = f.text_field :name, class: 'form-control', label: "Name <span class='text-danger'>(required)</span>".html_safe
+  = f.text_area :description, class: 'form-control', rows: 5
+
+  - if current_user.member?
+    = f.check_box :restricted
+    = f.check_box :visible
+
   .actions.pull-right
     - if @group.new_record?
       = link_to groups_path, class: 'btn btn-default' do

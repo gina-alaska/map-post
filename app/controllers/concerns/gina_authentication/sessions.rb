@@ -12,7 +12,7 @@ module GinaAuthentication
         @auth = Authorization.create_from_hash(auth_hash, current_user)
       end
     
-      @auth.touch
+      @auth.touch unless @auth.new_record?
       
       # Log the authorizing user in.
       self.current_user = @auth.user

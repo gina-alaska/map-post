@@ -1,15 +1,21 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
+  respond_to :geojson, :json, :html
+  
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.visible.recent
+    
+    respond_with @events
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
+    
+    respond_with @event
   end
 
   # GET /events/new
@@ -25,6 +31,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @event.user = current_user
 
     respond_to do |format|
       if @event.save
@@ -70,9 +77,9 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       if current_user.member?
-        params.require(:event).permit(:title, :description, :group_id, :location, :visible, :event_at)
+        params.require(:event).permit(:title, :description, :group_id, :visible, :event_at, location: [:lat, :lng])
       else
-        params.require(:event).permit(:title, :description, :group_id, :location, :event_at)
+        params.require(:event).permit(:title, :description, :group_id, :event_at, location: [:lat, :lng])
       end
     end
 end
