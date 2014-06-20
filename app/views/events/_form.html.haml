@@ -27,7 +27,7 @@
       
       - if current_user.member?
         = f.check_box :visible
-      = f.text_field :event_at
+      = f.text_field :event_at, value: f.object.event_at.try(:strftime, '%F %H:%M %p'), data: { behavior: 'datetime-picker', date_format: "YYYY-MM-DD hh:mm A" }
 
       .form-actions.pull-right
         - if @event.new_record?

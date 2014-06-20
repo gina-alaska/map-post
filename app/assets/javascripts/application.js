@@ -18,6 +18,8 @@
 //= require proj4leaflet/src/proj4leaflet
 //= require gina-map-layers/dist/mapbox-adapter
 //= require leaflet-hash/leaflet-hash
+//= require moment/min/moment.min
+//= require eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min
 //= require turbolinks
 //= require basic_map
 //= require map_layer
