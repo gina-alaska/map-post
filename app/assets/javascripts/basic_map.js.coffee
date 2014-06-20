@@ -1,7 +1,5 @@
 class @BasicMapContainer
   constructor: (@selector, @default_layer = 'Mapbox Terrain') ->
-    L.Icon.Default.imagePath = '/assets/mapbox.js/dist/images';
-
     @map = L.mapbox.map(@selector, 'gina-alaska.heb1gpfg')
     @defaultZoom()
 
