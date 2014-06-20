@@ -4,8 +4,8 @@ class Event < ActiveRecord::Base
   belongs_to :group
   belongs_to :user
   
-  scope :visible, -> { where(visible: true).includes(:user).where(users: { banned: false }) }
-  scope :recent, -> { where('event_at > ? and event_at < ?', Time.zone.now, Time.zone.now + 60.days).order(event_at: :asc) }
+  scope :visible, -> { where(visible: true).includes(:user).where(users: { banned: false }).where('event_at >= ?', Time.zone.now) }
+  scope :recent, -> { where('event_at < ?', Time.zone.now + 60.days).order(event_at: :asc) }
   
   validates :title, presence: true
   validates :description, presence: true
