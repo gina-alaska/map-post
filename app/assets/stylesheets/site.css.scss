@@ -1,0 +1,24 @@
+.navbar-uaf {
+  background-color: #236192;
+  color: #FFFFFF;
+  border-color: darken(#236192, 20%);
+  
+  .navbar-nav > li {
+    a {
+      color: #FFFFFF;
+      &:hover {
+        background-color:#efefef;
+        color: #333;
+      }
+    }
+    &.active > a {
+      background-color: #dfdfdf;
+      color: #333;
+    }
+  }  
+  
+  .navbar-brand {
+    font-size: 25px;
+    color: #FFCD00;
+  }
+}
