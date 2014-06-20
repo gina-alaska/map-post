@@ -17,9 +17,9 @@
           %li{ class: (controller.class == EventsController ? 'active' : '') }
             = link_to events_path do
               Events
-      - else
-        = link_to new_events_path, class: 'btn btn-default navbar-btn' do
-          New event
+      / - else
+      /   = link_to new_events_path, class: 'btn btn-default navbar-btn' do
+      /     New event
     .navbar-right
       - if signed_in?
         = link_to logout_path, class: 'btn btn-default navbar-btn' do
