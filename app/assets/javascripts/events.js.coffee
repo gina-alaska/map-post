@@ -3,11 +3,16 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 class @EventEditor
-  constructor: (@map_container, @config) ->
-    marker = @build_marker()
-    @layer = L.featureGroup([marker])
+  constructor: (map_container, config) ->
+    @layer = L.featureGroup()
+    @setup(map_container, config)
     @map_container.addLayer(@layer)
+    
+  setup: (@map_container, @config) =>
+    marker = @build_marker()
+    @layer.addLayer(marker)
     @map_container.map.setView(marker.getLatLng())
+    
   build_marker: =>
     lat = $(@config.lat).val()
     lng = $(@config.lng).val()
@@ -27,7 +32,11 @@ class @EventEditor
       marker.on 'add', ->
         this.openPopup()
       
+    @update_event_location({ target: marker })
     marker
+    
+  clear: =>
+    @layer.clearLayers()
     
   update_event_location: (e) =>
     location = e.target.getLatLng()

@@ -28,6 +28,12 @@ class @GeoJSONLayer extends @MapLayer
           l.bindPopup(L.mapbox.template(@config.popup, l.feature.properties), {
             maxWidth: 500
           });
+          
+  
+    @layer.on 'popupopen', () ->
+      $('[data-date-format]').each (index,item) ->
+        m = moment($(item).html())
+        $(item).html(m.format('MMMM D, YYYY, h:mm:ss a'))
         
   styleProps: (name, attrs) =>
     if attrs[name]? and attrs[name] != ''

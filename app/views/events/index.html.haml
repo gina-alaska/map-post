@@ -5,7 +5,8 @@
       %th Description
       %th Group
       %th Visible
-      %th Event at
+      %th Starts
+      %th Ends
       %th
   %tbody
     - @events.each do |event|
@@ -14,8 +15,9 @@
         %td= event.description
         %td= event.group
         %td= event.visible
-        %td= event.event_at
-        %td
+        %td= event.starts_at
+        %td= event.ends_at        
+        %td{ data: { no_turbolink: true } }
           = link_to event, class: 'btn btn-sm btn-primary' do
             %i.glyphicon.glyphicon-eye-open
           = link_to edit_event_path(event), class: 'btn btn-sm btn-default' do

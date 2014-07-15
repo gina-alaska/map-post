@@ -15,6 +15,7 @@
     .col-lg-6.col-md-6.col-sm-6
       #map{ style: 'height: 400px;'}
       :javascript
+        var editor;
         $(document).on('map:ready', function(e, container) {
           var editor = new EventEditor(container, { lat: '#event_location_lat', lng: '#event_location_lng', editable: true })
         })
@@ -27,7 +28,8 @@
       
       - if current_user.member?
         = f.check_box :visible
-      = f.text_field :event_at, value: f.object.event_at.try(:strftime, '%F %H:%M %p'), data: { behavior: 'datetime-picker', date_format: "YYYY-MM-DD hh:mm A" }
+      = f.text_field :starts_at, value: f.object.starts_at.try(:strftime, '%F %H:%M %p'), data: { behavior: 'datetime-picker', date_format: "YYYY-MM-DD hh:mm A" }
+      = f.text_field :ends_at, value: f.object.ends_at.try(:strftime, '%F %H:%M %p'), data: { behavior: 'datetime-picker', date_format: "YYYY-MM-DD hh:mm A" }
 
       .form-actions.pull-right
         - if @event.new_record?

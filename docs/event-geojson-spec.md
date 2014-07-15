@@ -30,10 +30,14 @@ Response Body:
       },
       "properties": {
         "id": 4,
-        "url": "http://map-post.127.0.0.1.xip.io/events/4.json",
         "title": "Party time!",
         "description": "Testing",
-        "event_at": "2014-07-30T11:10:00.000-08:00",
+        "starts_at": "2014-07-30T11:10:00.000-08:00",
+        "ends_at": "2014-07-31T11:10:00.000-08:00",
+        "created_at": "2014-07-15T11:10:47.388-08:00",
+        "updated_at": "2014-07-15T11:59:31.580-08:00",
+        "group_id": 1,
+        "group_url": "http://map-post.127.0.0.1.xip.io/groups/1.json",
         "group": {
           "id": 1,
           "name": "Geographic Information Network of Alaska",

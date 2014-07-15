@@ -3,7 +3,7 @@
     - if @event.nil? or not @event.new_record?
       .navbar-right
         .btn-group
-          = link_to new_event_path, class: 'btn btn-success navbar-btn' do
+          = link_to new_event_path, class: 'btn btn-success navbar-btn', data: { no_turbolink: true } do
             New event
           
     - unless current_page?(events_path)
@@ -14,5 +14,5 @@
       
     - unless @event.nil? or @event.new_record? or current_page?(edit_event_path(@event))
       .btn-group
-        = link_to edit_event_path(@event), class: 'btn btn-default navbar-btn' do
+        = link_to edit_event_path(@event), class: 'btn btn-default navbar-btn', data: { no_turbolink: true } do
           Edit event
