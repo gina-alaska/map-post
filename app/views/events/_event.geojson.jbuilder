@@ -2,9 +2,10 @@ json.cache! ['v1', event] do
   json.type 'Feature'
   json.geometry event.location
   json.properties do
-    json.url event_url(event, :json)
+    json.id event.id
+    json.url event_url(event, :geojson)
     json.(event, :title, :description)
-    json.event_at event.event_at.strftime('%F %H:%M%p')
+    json.event_at event.event_at
     json.group do
       json.partial! event.group
     end
