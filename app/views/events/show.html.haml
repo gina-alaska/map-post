@@ -1,21 +1,5 @@
 .row
-  .col-lg-6
-    %p
-      %strong Title:
-      = @event.title
-    %p
-      %strong Description:
-      = @event.description
-    %p
-      %strong Group:
-      = @event.group
-    %p
-      %strong Starts at:
-      = @event.starts_at
-    %p
-      %strong Ends at:
-      = @event.ends_at
-  .col-lg-6
+  .col-lg-6.col-md-6
     #map{ style: 'height: 400px;' }
     = hidden_field_tag :lat, @event.location.lat, id: 'event_lat'
     = hidden_field_tag :lng, @event.location.lng, id: 'event_lng'
@@ -24,3 +8,16 @@
       $(document).on('map:ready', function(e, container) {
         editor = new EventEditor(container, { lat: '#event_lat', lng: '#event_lng', editable: false })
       })
+
+  .col-lg-6.col-md-6
+    %h1= @event.title
+    %p= @event.description
+    %p
+      %strong Group:
+      = @event.group
+    %p
+      %strong Starts:
+      = @event.starts_at
+    %p
+      %strong Ends:
+      = @event.ends_at

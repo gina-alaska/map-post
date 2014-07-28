@@ -1,26 +1,22 @@
+%h1 Posts
 %table.table.table-condensed.table-striped.table-bordered
-  %thead
-    %tr
-      %th Title
-      %th Description
-      %th Group
-      %th Visible
-      %th Starts
-      %th Ends
-      %th
   %tbody
     - @events.each do |event|
       %tr
-        %td= event.title
-        %td= event.description
-        %td= event.group
-        %td= event.visible
         %td= event.starts_at
-        %td= event.ends_at        
+        %td
+          %div
+            %b= event.title
+          %div
+            %b Group:
+            = event.group
+          %div
+            = event.description
         %td{ data: { no_turbolink: true } }
-          = link_to event, class: 'btn btn-sm btn-primary' do
-            %i.glyphicon.glyphicon-eye-open
-          = link_to edit_event_path(event), class: 'btn btn-sm btn-default' do
-            %i.glyphicon.glyphicon-edit
-          = link_to event, method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: 'Are you sure?' } do
-            %i.glyphicon.glyphicon-trash
+          .btn-group
+            = link_to event, class: 'btn btn-sm btn-primary' do
+              %i.glyphicon.glyphicon-eye-open
+            = link_to edit_event_path(event), class: 'btn btn-sm btn-default' do
+              %i.glyphicon.glyphicon-edit
+            = link_to event, method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: 'Are you sure?' } do
+              %i.glyphicon.glyphicon-trash

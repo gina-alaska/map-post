@@ -1,8 +1,12 @@
+.navbar {
+  margin-bottom: 0;
+}
+
 .navbar-uaf {
   background-color: #236192;
   color: #efefef;
   border-color: darken(#236192, 20%);
-  
+
   .navbar-nav > li {
     a {
       color: #FFFFFF;
@@ -15,8 +19,8 @@
       background-color: #dfdfdf;
       color: #3f3f3f;
     }
-  }  
-  
+  }
+
   .navbar-brand {
     font-size: 25px;
     color: #FFCD00;

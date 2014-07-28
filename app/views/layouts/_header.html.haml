@@ -4,7 +4,7 @@
       Map Post
     - if signed_in?
       - if current_user.member?
-        %ul.nav.navbar-nav        
+        %ul.nav.navbar-nav
           %li{ class: (controller.class == UsersController  ? 'active' : '') }
             = link_to users_path do
               Users
@@ -16,7 +16,7 @@
               Groups
           %li{ class: (controller.class == EventsController ? 'active' : '') }
             = link_to events_path do
-              Events
+              Posts
       / - else
       /   = link_to new_events_path, class: 'btn btn-default navbar-btn' do
       /     New event
