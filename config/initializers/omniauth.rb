@@ -5,7 +5,8 @@
     provider :google_oauth2, Rails.application.secrets.google_key, Rails.application.secrets.google_secret, {
       name: "google",
       scope: "userinfo.profile,userinfo.email",
-      hd: "alaska.edu",
+      # leave this out for now for dev purposes
+      # hd: "alaska.edu",
       include_granted_scopes: true,
       # scope: "userinfo.profile",
       #image_aspect_ratio: "square",
