@@ -30,4 +30,5 @@ html,body {
   top: 60px;
   left: 50%;
   margin-left: -200px;
+  z-index: 1;
 }

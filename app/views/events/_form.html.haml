@@ -31,11 +31,11 @@
 
       .form-actions.pull-right
         - if @event.new_record?
-          = link_to events_path, class: 'btn btn-default' do
+          = link_to :back, class: 'btn btn-default', data: { no_turbolink: true } do
             %i.glyphicon.glyphicon-arrow-left
             Cancel
         - else
-          = link_to @event, class: 'btn btn-default' do
+          = link_to @event, class: 'btn btn-default', data: { no_turbolink: true } do
             %i.glyphicon.glyphicon-arrow-left
             Cancel
         = f.primary 'Save Post'

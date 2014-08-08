@@ -20,6 +20,8 @@ gem 'redcarpet'
 gem 'georuby'
 gem 'bootstrap_form'
 gem 'browser'
+gem 'cancancan', '~> 1.9'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

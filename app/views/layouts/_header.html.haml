@@ -2,6 +2,13 @@
   .container-fluid
     = link_to root_path, class: 'navbar-brand', "data-no-turbolink" => true do
       Map Post
+    .navbar-right
+      - if signed_in?
+        = link_to logout_path, class: 'btn btn-default navbar-btn' do
+          Logout
+      - else
+        = link_to login_path, class: 'btn btn-default navbar-btn' do
+          Login
     - if signed_in?
       - if current_user.member?
         %ul.nav.navbar-nav
@@ -17,14 +24,10 @@
           %li{ class: (controller.class == EventsController ? 'active' : '') }
             = link_to events_path do
               Posts
-      / - else
-      /   = link_to new_events_path, class: 'btn btn-default navbar-btn' do
-      /     New event
-    .navbar-right
-      - if signed_in?
-        = link_to logout_path, class: 'btn btn-default navbar-btn' do
-          Logout
       - else
-        = link_to login_path, class: 'btn btn-default navbar-btn' do
-          Login
+        %ul.nav.navbar-nav.navbar-right{ style: 'margin-right: 20px;' }
+          %li
+            = link_to new_event_path do
+              %i.fa.fa-plus
+              Submit a post
 = yield 'navbar'
