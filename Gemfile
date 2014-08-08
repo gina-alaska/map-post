@@ -19,6 +19,7 @@ gem 'quiet_assets'
 gem 'redcarpet'
 gem 'georuby'
 gem 'bootstrap_form'
+gem 'browser'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
