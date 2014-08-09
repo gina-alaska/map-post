@@ -5,13 +5,20 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
+    begin
+      flash[:alert] = exception.message
+      redirect_to :back
+    rescue ActionController::RedirectBackError
+      redirect_to root_path
+    end
   end
 
   protected
 
   def set_device_type
-    if browser.mobile? or params[:mobile].present?
+    if request.xhr?
+      request.variant = :ajax
+    elsif browser.mobile? or params[:mobile].present?
       request.variant = :phone
     elsif browser.tablet? or params[:tablet].present?
       # use phone for now

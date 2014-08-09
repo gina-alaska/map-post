@@ -3,6 +3,6 @@
 :markdown
   #{@group.description}
   
-%h3 Upcoming Events
-
-= render @group.events.visible
+%h2 Upcoming Events
+.container
+  = render partial: @group.events.visible, spacer_template: 'event_list_spacer'

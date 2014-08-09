@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :events
+  resources :events, path: 'e'
+  get '/events(.:format)' => 'events#index'
 
-  resources :groups
+  resources :groups, path: 'g'
 
   get '/logout', to: 'sessions#destroy', as: :logout
   get '/login', to: redirect('/auth/google'), as: :login

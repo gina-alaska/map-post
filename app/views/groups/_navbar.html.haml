@@ -1,18 +1,19 @@
-%nav.navbar.navbar-default.navbar-static-top
-  .container-fluid
-    - if @group.nil? or not @group.new_record?
-      .navbar-right
-        .btn-group
-          = link_to new_group_path, class: 'btn btn-success navbar-btn' do
-            New Group
+- if can?(:manage, Group)
+  %nav.navbar.navbar-default.navbar-static-top
+    .container-fluid
+      - if @group.nil? or not @group.new_record?
+        .navbar-right
+          .btn-group
+            = link_to new_group_path, class: 'btn btn-success navbar-btn' do
+              New Group
           
-    - unless current_page?(groups_path)
-      .btn-group
-        = link_to groups_path, class: 'btn btn-primary navbar-btn' do
-          %i.glyphicon.glyphicon-arrow-left
-          View all
+      - unless current_page?(groups_path)
+        .btn-group
+          = link_to groups_path, class: 'btn btn-primary navbar-btn' do
+            %i.glyphicon.glyphicon-arrow-left
+            View all
       
-    - unless @group.nil? or @group.new_record? or current_page?(edit_group_path(@group))
-      .btn-group
-        = link_to edit_group_path(@group), class: 'btn btn-default navbar-btn' do
-          Edit group
+      - unless @group.nil? or @group.new_record? or current_page?(edit_group_path(@group))
+        .btn-group
+          = link_to edit_group_path(@group), class: 'btn btn-default navbar-btn' do
+            Edit group

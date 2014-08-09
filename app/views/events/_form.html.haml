@@ -1,27 +1,22 @@
-= bootstrap_form_for(@event) do |f|
-  = f.fields_for :location do |lf|
-    = lf.hidden_field :lat, value: f.object.location.lat.to_s
-    = lf.hidden_field :lng, value: f.object.location.lng.to_s
+.row-fluid
+  .col-lg-6.col-md-6.col-sm-6{ style: 'margin:0; padding:0;' }
+    #map.editor-map
+    :javascript
+      var editor;
+      $(document).on('map:ready', function(e, container) {
+        var editor = new EventEditor(container, { lat: '#event_location_lat', lng: '#event_location_lng', editable: true })
+      })
 
-  - if @event.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@event.errors.count, "error")
-        prohibited this event from being saved:
-      %ul
-        - @event.errors.full_messages.each do |message|
-          %li= message
-  .row
-    .col-lg-6.col-md-6.col-sm-6
-      #map{ style: 'height: 400px;'}
-      :javascript
-        var editor;
-        $(document).on('map:ready', function(e, container) {
-          var editor = new EventEditor(container, { lat: '#event_location_lat', lng: '#event_location_lng', editable: true })
-        })
+  .col-lg-6.col-md-6.col-sm-6
+    - if defined? title
+      %h2= title 
+    = bootstrap_form_for(@event) do |f|
+      = f.alert_message "Please fix the errors below."
+      = f.fields_for :location do |lf|
+        = lf.hidden_field :lat, value: f.object.location.lat.to_s
+        = lf.hidden_field :lng, value: f.object.location.lng.to_s
 
-    .col-lg-6.col-md-6.col-sm-6
-
+      
       = f.text_field :title
       = f.text_area :description
       = f.collection_select :group_id, Group.available, :id, :to_s, { prompt: 'Select a group' }

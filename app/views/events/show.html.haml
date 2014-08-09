@@ -1,5 +1,5 @@
 .row
-  .col-lg-6.col-md-6
+  .col-lg-8.col-md-7
     #map{ style: 'height: 400px;' }
     = hidden_field_tag :lat, @event.location.lat, id: 'event_lat'
     = hidden_field_tag :lng, @event.location.lng, id: 'event_lng'
@@ -9,15 +9,5 @@
         editor = new EventEditor(container, { lat: '#event_lat', lng: '#event_lng', editable: false })
       })
 
-  .col-lg-6.col-md-6
-    %h1= @event.title
-    %p= @event.description
-    %p
-      %strong Group:
-      = @event.group
-    %p
-      %strong Starts:
-      = @event.starts_at
-    %p
-      %strong Ends:
-      = @event.ends_at
+  .col-lg-4.col-md-5
+    = render @event

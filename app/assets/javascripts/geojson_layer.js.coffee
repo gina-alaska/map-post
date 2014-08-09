@@ -25,9 +25,11 @@ class @GeoJSONLayer extends @MapLayer
           })); 
         
         if @config.popup? and @config.popup != ''
-          l.bindPopup(L.mapbox.template(@config.popup, l.feature.properties), {
-            maxWidth: 500
-          });
+          request = $.get(l.feature.properties.url)
+          request.done (content) =>
+            l.bindPopup(content, {
+              maxWidth: 500
+            });
           
   
     @layer.on 'popupopen', () ->

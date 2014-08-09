@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :set_device_type
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
 
@@ -15,8 +16,10 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-
-    respond_with @event
+    respond_to do |format|
+      format.html.ajax { render layout: false }
+      format.html
+    end
   end
 
   # GET /events/new

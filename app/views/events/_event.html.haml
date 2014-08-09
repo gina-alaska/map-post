@@ -1,12 +1,23 @@
+%h3= event.title
+%p= event.description
 .container
-  %h4{ style: 'margin: 0;' }= event.title
-  %p= event.description
+  %div
+    %strong Group:
+    = link_to event.group, event.group
+  %div
+    %strong Starts:
+    = event.starts_at
+  %div
+    %strong Ends:
+    = event.ends_at
+%br/
+%p
+  - if can?(:edit, event)
+    = link_to edit_event_path(event), style: 'margin-right: 10px;' do
+      %i.fa.fa-edit
+      Edit
 
-  %dl.dl-horizontal.event
-    %dt Group
-    %dd= event.group
-    %dt When?
-    %dd= event.event_at
-    %dt Location
-    %dd= link_to 'View map', event
-  %hr
+  = link_to event do
+    %i.fa.fa-link
+    Permalink
+    

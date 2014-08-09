@@ -1,33 +1,41 @@
-%nav.navbar.navbar-uaf.navbar-static-top{ style: 'margin-bottom: 0;' }
+%nav.navbar.navbar-default.navbar-uaf.navbar-static-top{ style: 'margin-bottom: 0;' }
   .container-fluid
-    = link_to root_path, class: 'navbar-brand', "data-no-turbolink" => true do
-      Map Post
-    .navbar-right
+    .navbar-header
+      %button{ type: 'button', class: 'navbar-toggle', data: { toggle: 'collapse', target: '#nav-header-collapse' }}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to root_path, class: 'navbar-brand', "data-no-turbolink" => true do
+        Map Post
+
+    #nav-header-collapse.collapse.navbar-collapse
+      .navbar-right
+        - if signed_in?
+          = link_to logout_path, class: 'btn btn-default navbar-btn' do
+            Logout
+        - else
+          = link_to login_path, class: 'btn btn-default navbar-btn' do
+            Login
       - if signed_in?
-        = link_to logout_path, class: 'btn btn-default navbar-btn' do
-          Logout
-      - else
-        = link_to login_path, class: 'btn btn-default navbar-btn' do
-          Login
-    - if signed_in?
-      - if current_user.member?
-        %ul.nav.navbar-nav
-          %li{ class: (controller.class == UsersController  ? 'active' : '') }
-            = link_to users_path do
-              Users
-          %li{ class: (controller.class == MembershipsController ? 'active' : '') }
-            = link_to memberships_path do
-              Permissions
-          %li{ class: (controller.class == GroupsController ? 'active' : '') }
-            = link_to groups_path do
-              Groups
-          %li{ class: (controller.class == EventsController ? 'active' : '') }
-            = link_to events_path do
-              Posts
-      - else
-        %ul.nav.navbar-nav.navbar-right{ style: 'margin-right: 20px;' }
-          %li
-            = link_to new_event_path do
-              %i.fa.fa-plus
-              Submit a post
+        - if current_user.member?
+          %ul.nav.navbar-nav
+            %li{ class: (controller.class == UsersController  ? 'active' : '') }
+              = link_to users_path do
+                Users
+            %li{ class: (controller.class == MembershipsController ? 'active' : '') }
+              = link_to memberships_path do
+                Permissions
+            %li{ class: (controller.class == GroupsController ? 'active' : '') }
+              = link_to groups_path do
+                Groups
+            %li{ class: (controller.class == EventsController ? 'active' : '') }
+              = link_to events_path do
+                Posts
+        - else
+          %ul.nav.navbar-nav.navbar-right{ style: 'margin-right: 20px;' }
+            %li
+              = link_to new_event_path do
+                %i.fa.fa-plus
+                Submit a post
 = yield 'navbar'

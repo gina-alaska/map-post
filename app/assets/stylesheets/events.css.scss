@@ -11,3 +11,13 @@ dl.event {
     margin-left: 110px;
   }
 }
+
+@media only screen and (max-width: 560px) {
+  #map.editor-map {
+    max-height: 250px;
+  }
+}
+
+#map.editor-map {
+  height: 500px;
+}

@@ -6,6 +6,23 @@
   background-color: #236192;
   color: #efefef;
   border-color: darken(#236192, 20%);
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.4);
+  
+
+  .navbar-toggle {
+    color: black;
+    background-color: white;
+  }
+  
+  .navbar-toggle {
+    &:hover, &:focus {
+      background-color: #dfdfdf;
+    }
+  }
+
+  .icon-bar {
+    background-color: #fff;
+  }  
 
   .navbar-nav > li {
     a {
