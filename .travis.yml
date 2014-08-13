@@ -11,4 +11,4 @@ before_script:
 notifications:
   campfire:
     rooms:
-      secure: A6W7X2wP+pSjcvHP7Pg0nKvSEtAK1Z3KF1CjO0HFfvLGMuSjbXVhYtVSy+SqXBOEW0w4vNyWsuEYrqHADsmxWDCBxRrag+r3AR90kouzbK86gSvzz8WrqUEva5jH5Q8cCeB6vtU7AMqXouzvU6HheMu0q8fIVJvWZqlLC9s44NU=
+      secure: fD1kclF+hrPaVy/4Mwm8M/faV0sNs/qPHBpyr/dbLwcDWNcJJ61iZKKAarkviGMGwm2bHg3Uct4t9QNBiwFmwcafuzj03QTKPhj6KgZIWdm2sUn/vas44I5KJZe8SmduKvnRAgVwNRFdCNsObHUd2jgAMAQnQIRqcmpWJhJ/18M=
