@@ -7,8 +7,11 @@ Application for hosting the map-post api data for the UAF Office of Sustainabili
 ## API Documentation
 
 [General Overview](docs/API_Overview.md)
+
 [Events Geojson Spec](docs/event-geojson-spec.md)
+
 [Events JSON Spec](docs/event-json-spec.md)
+
 [Groups JSON Spec](docs/group-json-spec.md)
 
 ## Installation
