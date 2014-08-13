@@ -6,6 +6,10 @@ class GroupsControllerTest < ActionController::TestCase
     @user = users(:one)
     session[:user_id] = @user.id
   end
+  
+  test 'should recognize groups api route' do
+    assert_recognizes({ controller: 'groups', action: 'index', format: 'json'}, "/groups.json")
+  end
 
   test "should get index" do
     get :index
