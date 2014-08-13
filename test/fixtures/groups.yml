@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: First Group
+  acronym: Testing 123
   description: MyText
   restricted: false
-  visible: false
+  visible: true
 
 two:
-  name: MyString
+  name: Another Group
+  acronym: Testing 456r
   description: MyText
   restricted: false
-  visible: false
+  visible: true

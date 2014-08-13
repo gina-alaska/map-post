@@ -3,6 +3,8 @@ require 'test_helper'
 class GroupsControllerTest < ActionController::TestCase
   setup do
     @group = groups(:one)
+    @user = users(:one)
+    session[:user_id] = @user.id
   end
 
   test "should get index" do
@@ -18,7 +20,7 @@ class GroupsControllerTest < ActionController::TestCase
 
   test "should create group" do
     assert_difference('Group.count') do
-      post :create, group: { description: @group.description, name: @group.name, restricted: @group.restricted, visible: @group.visible }
+      post :create, group: { description: @group.description, name: @group.name + ' new name', acronym: @group.acronym, restricted: @group.restricted, visible: @group.visible }
     end
 
     assert_redirected_to group_path(assigns(:group))

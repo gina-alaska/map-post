@@ -3,7 +3,7 @@ class Group < ActiveRecord::Base
   scope :available, -> { where(visible: true, restricted: false) }
   
   validates :name, presence: true, uniqueness: true
-  validates :acronym, presence: true, uniqueness: true
+  validates :acronym, presence: true
   
   has_many :events
   

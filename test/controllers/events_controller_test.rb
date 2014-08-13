@@ -3,6 +3,8 @@ require 'test_helper'
 class EventsControllerTest < ActionController::TestCase
   setup do
     @event = events(:one)
+    @user = users(:one)
+    session[:user_id] = @user.id
   end
 
   test "should get index" do
@@ -18,7 +20,7 @@ class EventsControllerTest < ActionController::TestCase
 
   test "should create event" do
     assert_difference('Event.count') do
-      post :create, event: { description: @event.description, event_at: @event.event_at, group_id: @event.group_id, title: @event.title, user_id: @event.user_id, visible: @event.visible }
+      post :create, event: { description: @event.description, starts_at: @event.starts_at, ends_at: @event.ends_at, group_id: @event.group_id, title: @event.title, user_id: @event.user_id, visible: @event.visible }
     end
 
     assert_redirected_to event_path(assigns(:event))

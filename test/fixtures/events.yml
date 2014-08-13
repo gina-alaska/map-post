@@ -3,15 +3,17 @@
 one:
   title: MyString
   description: MyText
-  group_id: 
-  user_id: 
+  group: one
+  user: one
   visible: false
-  event_at: 2014-06-10 10:35:46
+  starts_at: <%= Time.zone.now %>
+  ends_at: <%= Time.zone.now + 1.month %>
 
 two:
   title: MyString
   description: MyText
-  group_id: 
-  user_id: 
+  group: one
+  user: one
   visible: false
-  event_at: 2014-06-10 10:35:46
+  starts_at: <%= Time.zone.now - 1.month %>
+  ends_at: <%= Time.zone.now - 1.day %>
