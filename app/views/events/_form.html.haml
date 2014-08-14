@@ -24,13 +24,9 @@
       = f.text_field :starts_at, value: f.object.starts_at.try(:strftime, '%F %H:%M %p'), data: { behavior: 'datetime-picker', date_format: "YYYY-MM-DD hh:mm A" }
       = f.text_field :ends_at, value: f.object.ends_at.try(:strftime, '%F %H:%M %p'), data: { behavior: 'datetime-picker', date_format: "YYYY-MM-DD hh:mm A" }
 
-      .form-actions.pull-right
-        - if @event.new_record?
-          = link_to :back, class: 'btn btn-default', data: { no_turbolink: true } do
-            %i.glyphicon.glyphicon-arrow-left
-            Cancel
-        - else
-          = link_to @event, class: 'btn btn-default', data: { no_turbolink: true } do
-            %i.glyphicon.glyphicon-arrow-left
-            Cancel
+      .pull-right
+        = link_to :back, class: 'btn btn-default', data: { no_turbolink: true } do
+          %i.glyphicon.glyphicon-arrow-left
+          Cancel
+        &nbsp;
         = f.primary 'Save Post'

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :events, path: 'e'
+
+  resources :events, path: 'e' do
+    resources :reports, shallow: true
+  end
   get '/events(.:format)' => 'events#index'
 
   resources :groups, path: 'g'

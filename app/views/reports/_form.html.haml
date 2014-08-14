@@ -1,0 +1,14 @@
+= bootstrap_form_for([@event, @report]) do |f|
+  = f.alert_message "Please fix the following errors"
+  
+  %blockquote
+    = render @report.event, hide_links: true
+  
+  = f.text_area :reason, rows: 5, label: 'Reason for report'
+  
+  .pull-right
+    = link_to :back, class: 'btn btn-default' do
+      %i.fa.fa-arrow-left
+      Cancel
+    &nbsp;
+    = f.primary

@@ -16,12 +16,18 @@ class Ability
       event.user == user
     end
     
+    can [:new, :create], Report
+    can [:read, :edit, :update, :destroy], Report do |report|
+      report.user == user
+    end
+    
     can [:new, :create], Group
     can [:edit, :update, :destroy], Group do |group|
       group.user == user
     end
     
     if user.member?
+      can :read, Report
       can :manage, Event
       can :manage, Group
       can :manage, Membership

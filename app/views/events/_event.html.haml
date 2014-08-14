@@ -1,5 +1,8 @@
+- hide_links ||= false
+
 %h3= event.title
 %p= event.description
+
 .container
   %div
     %strong Group:
@@ -11,13 +14,28 @@
     %strong Ends:
     = event.ends_at
 %br/
-%p
-  - if can?(:edit, event)
-    = link_to edit_event_path(event), style: 'margin-right: 10px;' do
-      %i.fa.fa-edit
-      Edit
+- unless hide_links
+  %p
+    - if can?(:edit, event)
+      = link_to edit_event_path(event), style: 'margin-right: 10px;' do
+        %i.fa.fa-edit
+        Edit
 
-  = link_to event do
-    %i.fa.fa-link
-    Permalink
+    - if can?(:create, Report)
+      = link_to new_event_report_path(event), style: 'margin-right: 10px;' do
+        %i.fa.fa-exclamation
+        Report
     
+    = link_to event do
+      %i.fa.fa-link
+      Permalink
+
+- if can?(:read, Report) and event.reports.empty?    
+  .alert.alert-danger
+    %h4 
+      %i.fa.fa-exclamation-triangle
+      This post has been reported
+    %ul
+      - event.reports.each do |report|
+        - next unless can? :read, report
+        %li #{report.reason} on #{report.updated_at}

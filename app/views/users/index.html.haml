@@ -1,26 +1,29 @@
-%table.table.table-bordered.table-striped.table-condensed
-  %thead
-    %tr
-      %th UID
-      %th # Event Posts
-      %th Banned?
-      %th.text-right Actions
-  %tbody
-    - @users.each do |user|
+.container
+  %h1 Listing user
+  
+  %table.table.table-bordered.table-striped.table-condensed
+    %thead
       %tr
-        %td= link_to user, user
-        %td= user.events.count
-        %td
-          - if user.banned?
-            = link_to unban_user_path(user, return_to_all: true), method: :patch, class: 'btn btn-sm btn-danger', title: 'Unban' do
-              %i.glyphicon.glyphicon-remove
-              Yes - click to unban
-          - else
-            = link_to ban_user_path(user, return_to_all: true), method: :patch, class: 'btn btn-sm btn-success', title: 'Ban' do
-              %i.glyphicon.glyphicon-ok
-              No - click to ban
-        %td.text-right
-          .btn-group
-            = link_to user, class: 'btn btn-sm btn-primary' do
-              %i.glyphicon.glyphicon-eye-open
+        %th UID
+        %th # Event Posts
+        %th Banned?
+        %th.text-right Actions
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= link_to user, user
+          %td= user.events.count
+          %td
+            - if user.banned?
+              = link_to unban_user_path(user, return_to_all: true), method: :patch, class: 'btn btn-sm btn-danger', title: 'Unban' do
+                %i.glyphicon.glyphicon-remove
+                Yes - click to unban
+            - else
+              = link_to ban_user_path(user, return_to_all: true), method: :patch, class: 'btn btn-sm btn-success', title: 'Ban' do
+                %i.glyphicon.glyphicon-ok
+                No - click to ban
+          %td.text-right
+            .btn-group
+              = link_to user, class: 'btn btn-sm btn-primary' do
+                %i.glyphicon.glyphicon-eye-open
           

@@ -1,10 +1,11 @@
-%h1
-  UID: 
-  = @user.authorizations.last.uid
+.container
+  %h1
+    UID: 
+    = @user.authorizations.last.uid
 
-%dl.dl-horizontal
-  %dt # of posts
-  %dd= @user.events.count
+  %dl.dl-horizontal
+    %dt # of posts
+    %dd= @user.events.count
 
-%h3 Submitted Events
-= render @user.events.order(event_at: :desc)
+  %legend Submitted Events
+  = render @user.events.order(event_at: :desc)

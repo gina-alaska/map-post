@@ -1,5 +1,6 @@
-#flash
-  - flash.each do |type,msg|
-    .alert{ class: "alert-#{bootstrap_alert_class(type)}" }
-      %button.close{ type: "button", class:"close", data: { dismiss: "alert" } } &times;
-      = msg
+- unless flash.empty?
+  #flash
+    - flash.each do |type,msg|
+      .alert{ class: "alert-#{bootstrap_alert_class(type)}" }
+        %button.close{ type: "button", class:"close", data: { dismiss: "alert" } } &times;
+        = msg

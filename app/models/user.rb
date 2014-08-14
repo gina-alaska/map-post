@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   include GinaAuthentication::UserModel
   
   has_many :events
+  has_many :groups
+  has_many :reports
   
   def ban
     self.update_attribute(:banned, true)
