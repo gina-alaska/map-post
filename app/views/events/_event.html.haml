@@ -30,7 +30,7 @@
       %i.fa.fa-link
       Permalink
 
-- if can?(:read, Report) and event.reports.empty?    
+- if can?(:read, Report) and !event.reports.empty?    
   .alert.alert-danger
     %h4 
       %i.fa.fa-exclamation-triangle
