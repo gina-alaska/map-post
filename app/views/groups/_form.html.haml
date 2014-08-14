@@ -14,13 +14,8 @@
     = f.check_box :visible
 
   .actions.pull-right
-    - if @group.new_record?
-      = link_to groups_path, class: 'btn btn-default' do
-        %i.glyphicon.glyphicon-arrow-left
-        Cancel
-    - else
-      = link_to @group, class: 'btn btn-default' do
-        %i.glyphicon.glyphicon-arrow-left
-        Cancel
+    = link_to :back, class: 'btn btn-default' do
+      %i.glyphicon.glyphicon-arrow-left
+      Cancel
     
     = f.submit class: 'btn btn-primary'
