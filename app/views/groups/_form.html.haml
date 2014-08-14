@@ -3,12 +3,13 @@
   
   .row
     .col-lg-2.col-md-3.col-sm-4
-      = f.text_field :acronym, class: 'form-control', label: "Acronym <span class='text-danger'>(required)</span>".html_safe
+      = f.text_field :acronym, label: "Acronym <span class='text-danger'>(required)</span>".html_safe
     .col-lg-10.col-md-9.col-sm-8
-      = f.text_field :name, class: 'form-control', label: "Name <span class='text-danger'>(required)</span>".html_safe
-  = f.text_area :description, class: 'form-control', rows: 5
+      = f.text_field :name, label: "Name <span class='text-danger'>(required)</span>".html_safe
+  = f.text_field :url
+  = f.text_area :description, rows: 5
 
-  - if current_user.member?
+  - if can? :manage, @group
     = f.check_box :restricted
     = f.check_box :visible
 

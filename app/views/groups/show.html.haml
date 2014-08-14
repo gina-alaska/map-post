@@ -1,8 +1,16 @@
-%h1= @group
-
-:markdown
-  #{@group.description}
-  
-%h2 Upcoming Events
 .container
-  = render partial: @group.events.visible, spacer_template: 'event_list_spacer'
+  %h1
+    = @group
+    - if @group.url
+      %small
+        = link_to @group.url do 
+          %i.fa.fa-link
+          = @group.url
+
+  .description{ style: 'margin-left: 30px;' }
+    :markdown
+      #{@group.description}
+  
+  %legend Upcoming Events
+  .events{ style: 'margin-left: 30px;' }
+    = render partial: @group.events.visible, spacer_template: 'event_list_spacer'

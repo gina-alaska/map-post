@@ -16,6 +16,11 @@ class Ability
       event.user == user
     end
     
+    can [:new, :create], Group
+    can [:edit, :update, :destroy], Group do |group|
+      group.user == user
+    end
+    
     if user.member?
       can :manage, Event
       can :manage, Group
