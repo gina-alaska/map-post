@@ -19,6 +19,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html.ajax { render layout: false }
       format.html
+      format.json
     end
   end
 
