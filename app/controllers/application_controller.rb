@@ -6,8 +6,12 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     begin
-      flash[:alert] = exception.message
-      redirect_to :back
+      if signed_in?
+        redirect_to :back, :alert => exception.message
+      else
+        session[:redirect_back_to] = request.original_url
+        redirect_to login_path
+      end
     rescue ActionController::RedirectBackError
       redirect_to root_path
     end
