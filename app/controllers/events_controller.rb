@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.visible.recent
+    @events = Event.visible
 
     respond_with @events
   end
