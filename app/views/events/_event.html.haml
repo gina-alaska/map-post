@@ -1,7 +1,9 @@
 - hide_links ||= false
 
 %h3= event.title
-%p= event.description
+%p
+  :markdown
+    #{event.description}
 
 .container
   %div
