@@ -1,11 +1,11 @@
 class @BasicMapContainer
-  constructor: (@selector, @default_layer = 'Mapbox Terrain') ->
+  constructor: (@selector, @default_layer = 'Campus Map') ->
     @map = L.mapbox.map(@selector, 'gina-alaska.heb1gpfg')
     @defaultZoom()
 
     baselayers = {}
 
-    baselayers["Mapbox Terrain"] = L.mapbox.tileLayer('gina-alaska.heb1gpfg')
+    baselayers["Campus Map"] = L.mapbox.tileLayer('gina-alaska.k1844km2')
     
     $.extend(baselayers, Gina.Layers.find('TILE.EPSG::3857.*'))
 
