@@ -13,7 +13,7 @@ dl.event {
 }
 
 @media only screen and (max-width: 560px) {
-  #map {
+  #map.editor-map {
     max-height: 250px;
   }
 }

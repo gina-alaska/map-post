@@ -32,6 +32,9 @@
             %li{ class: (controller.class == EventsController ? 'active' : '') }
               = link_to events_path do
                 Posts
+            %li{ class: (controller.class == ReportsController ? 'active' : '') }
+              = link_to reports_path do
+                Reports
         - else
           %ul.nav.navbar-nav.navbar-right{ style: 'margin-right: 20px;' }
             %li

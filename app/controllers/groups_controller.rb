@@ -5,7 +5,8 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.order(name: :asc)
+    @q = Group.search(params[:q])
+    @groups = @q.result(distinct: true)
   end
 
   # GET /groups/1

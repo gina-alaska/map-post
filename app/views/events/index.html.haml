@@ -1,22 +1,45 @@
-%h1 Posts
-%table.table.table-condensed.table-striped.table-bordered
-  %tbody
-    - @events.each do |event|
+%h1 Posts list
+
+.panel.panel-default
+  .panel-heading
+    = search_form_for @q, class: 'form-horizontal' do |f|
+      .input-group
+        = f.search_field :title_or_description_or_group_name_or_group_acronym_cont, class: 'form-control', placeholder: "Search for groups"
+
+        / # Attributes may be chained. Search multiple attributes for one value...
+        / = f.label :name_or_description_or_email_or_articles_title_cont
+        / = f.search_field :name_or_description_or_email_or_articles_title_cont
+        %span.input-group-btn
+          = f.submit class: 'btn btn-primary' 
+          
+  %table.table.table-condensed.table-striped.table-bordered
+    %thead
       %tr
-        %td= event.starts_at
-        %td
-          %div
-            %b= event.title
-          %div
-            %b Group:
-            = event.group
-          %div
-            = event.description
-        %td{ data: { no_turbolink: true } }
-          .btn-group
-            = link_to event, class: 'btn btn-sm btn-primary' do
-              %i.glyphicon.glyphicon-eye-open
-            = link_to edit_event_path(event), class: 'btn btn-sm btn-default' do
-              %i.glyphicon.glyphicon-edit
-            = link_to event, method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: 'Are you sure?' } do
-              %i.glyphicon.glyphicon-trash
+        %th= sort_link @q, :starts_at, 'Dates'
+        %th= sort_link @q, :title, 'Post Info'
+        %th= sort_link @q, :reports_count, '# of Reports'
+        %th.text-right.col-sm-2 Actions
+        
+    %tbody
+      - @events.each do |event|
+        %tr
+          %td
+            %div= event.starts_at
+            %div= event.ends_at
+          %td
+            %div
+              %b= event.title
+            %div
+              %b Group:
+              = event.group
+            %div
+              = event.description
+          %td= event.reports.size
+          %td.text-right{ data: { no_turbolink: true } }
+            .btn-group
+              = link_to event, class: 'btn btn-sm btn-primary' do
+                %i.glyphicon.glyphicon-eye-open
+              = link_to edit_event_path(event), class: 'btn btn-sm btn-default' do
+                %i.glyphicon.glyphicon-edit
+              = link_to event, method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: 'Are you sure?' } do
+                %i.glyphicon.glyphicon-trash

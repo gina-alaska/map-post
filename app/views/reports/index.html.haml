@@ -1,0 +1,35 @@
+%h1 Reported Post List
+
+.panel.panel-default
+  .panel-heading
+    = search_form_for @q, class: 'form-horizontal' do |f|
+      / # Search if the name field contains...
+      / = f.label :name_cont
+      / = f.search_field :name_cont
+
+      / # Search if an associated articles.title starts with...
+      / = f.label :articles_title_start
+      / = f.search_field :articles_title_start
+      / = f.label :reason_or_event_title_cont
+      .input-group
+        = f.search_field :reason_or_event_description_or_event_title_cont, class: 'form-control', placeholder: "Search for reports by reason or post"
+
+        / # Attributes may be chained. Search multiple attributes for one value...
+        / = f.label :name_or_description_or_email_or_articles_title_cont
+        / = f.search_field :name_or_description_or_email_or_articles_title_cont
+        %span.input-group-btn
+          = f.submit class: 'btn btn-primary'
+  %table.table.table-condensed.table-stripped.table-bordered
+    %thead
+      %tr
+        %th User
+        %th= sort_link(@q, :entry_title, 'Post')
+        %th= sort_link(@q, :reason, 'Reason')
+        %th= sort_link(@q, :created_at, 'Reported on',default_order: :asc)
+    %tbody
+      - @reports.each do |report|
+        %tr
+          %td= link_to report.user, report.user
+          %td= link_to report.event.title, report.event
+          %td= report.reason
+          %td= report.created_at

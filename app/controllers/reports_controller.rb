@@ -7,7 +7,8 @@ class ReportsController < ApplicationController
   # GET /reports
   # GET /reports.json
   def index
-    @reports = Report.all
+    @q = Report.search(params[:q])
+    @reports = @q.result(distinct: true)
   end
 
   # GET /reports/1

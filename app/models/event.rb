@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
   belongs_to :user
   has_many :reports
 
-  scope :visible, -> { where(visible: true).includes(:user).where(users: { banned: false }).where('ends_at >= ?', Time.zone.now) }
+  scope :visible, -> { where(visible: true).includes(:user, :reports).where(users: { banned: false }).where('ends_at >= ?', Time.zone.now) }
   scope :recent, -> { where('starts_at <= ?', Time.zone.now + 60.days).order(event_at: :asc) }
 
   validates :title, presence: true

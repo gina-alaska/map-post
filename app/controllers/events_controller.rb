@@ -8,8 +8,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.visible
-
+    @q = Event.search(params[:q])
+    @events = @q.result(distinct: true).visible
     respond_with @events
   end
 

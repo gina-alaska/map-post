@@ -1,5 +1,15 @@
-.container
-  %h1 Listing groups
+%h1 Groups list
+.panel.panel-default
+  .panel-heading
+    = search_form_for @q, class: 'form-horizontal' do |f|
+      .input-group
+        = f.search_field :name_or_acronym_or_url_or_description_cont, class: 'form-control', placeholder: "Search for groups"
+
+        / # Attributes may be chained. Search multiple attributes for one value...
+        / = f.label :name_or_description_or_email_or_articles_title_cont
+        / = f.search_field :name_or_description_or_email_or_articles_title_cont
+        %span.input-group-btn
+          = f.submit class: 'btn btn-primary'  
   %table.table.table-bordered.table-striped.table-condensed
     %thead
       %tr
@@ -11,8 +21,8 @@
       - @groups.each do |group|
         %tr
           %td= link_to group, group
-          %td= group.restricted
-          %td= group.visible
+          %td= group.restricted ? 'Yes' : 'No'
+          %td= group.visible ? 'Yes' : 'No'
           %td.text-right
             .btn-group
               = link_to group, class: 'btn btn-sm btn-primary' do

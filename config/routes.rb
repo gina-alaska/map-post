@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :events, path: 'e' do
     resources :reports, shallow: true
   end
+  resources :reports
   get '/events(.:format)' => 'events#index'
 
   resources :groups, path: 'g'
