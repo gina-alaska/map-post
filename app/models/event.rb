@@ -58,4 +58,12 @@ class Event < ActiveRecord::Base
       "User was banned"
     end
   end
+
+  def has_address?
+    self.address_1.present? or self.address_2.present?
+  end
+
+  def address
+    [self.address_1, self.address_2].delete_if(&:empty?).join(", ")
+  end
 end
