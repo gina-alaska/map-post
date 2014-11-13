@@ -82,9 +82,9 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       if current_user.member?
-        params.require(:event).permit(:title, :description, :group_id, :visible, :starts_at, :ends_at, location: [:lat, :lng])
+        params.require(:event).permit(:title, :description, :group_id, :visible, :starts_at, :ends_at, :address_1, :address_2, location: [:lat, :lng])
       else
-        params.require(:event).permit(:title, :description, :group_id, :starts_at, :ends_at, location: [:lat, :lng])
+        params.require(:event).permit(:title, :description, :group_id, :starts_at, :ends_at, :address_1, :address_2, location: [:lat, :lng])
       end
     end
 end

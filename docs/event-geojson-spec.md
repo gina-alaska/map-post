@@ -36,6 +36,8 @@ Response Body:
         "ends_at": "2014-07-31T11:10:00.000-08:00",
         "created_at": "2014-07-15T11:10:47.388-08:00",
         "updated_at": "2014-07-15T11:59:31.580-08:00",
+        "address_1": "Wood Center",
+        "address_2": "University of Alaska Fairbanks",
         "group_id": 1,
         "group_url": "http://map-post.127.0.0.1.xip.io/groups/1.json",
         "group": {

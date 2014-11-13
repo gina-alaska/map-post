@@ -15,6 +15,10 @@
   %div
     %strong Ends:
     = event.ends_at
+  - if event.has_address?
+    %div
+      %strong Address:
+      = event.address
 %br/
 - unless hide_links
   %p
@@ -27,14 +31,14 @@
       = link_to new_event_report_path(event), style: 'margin-right: 10px;' do
         %i.fa.fa-exclamation
         Report
-    
+
     = link_to event do
       %i.fa.fa-link
       Permalink
 
-- if can?(:read, Report) and !event.reports.empty?    
+- if can?(:read, Report) and !event.reports.empty?
   .alert.alert-danger
-    %h4 
+    %h4
       %i.fa.fa-exclamation-triangle
       This post has been reported
     %ul
