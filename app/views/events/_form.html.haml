@@ -9,14 +9,14 @@
 
   .col-lg-6.col-md-6.col-sm-6
     - if defined? title
-      %h2= title 
+      %h2= title
     = bootstrap_form_for(@event) do |f|
       = f.alert_message "Please fix the errors below."
       = f.fields_for :location do |lf|
         = lf.hidden_field :lat, value: f.object.location.lat.to_s
         = lf.hidden_field :lng, value: f.object.location.lng.to_s
 
-      
+
       = f.text_field :title
       = f.text_area :description
       = f.collection_select :group_id, Group.available, :id, :to_s, { prompt: 'Select a group' }
@@ -24,6 +24,8 @@
       = f.text_field :starts_at, value: f.object.starts_at.try(:strftime, '%F %H:%M %p'), data: { behavior: 'datetime-picker', date_format: "YYYY-MM-DD hh:mm A" }
       = f.text_field :ends_at, value: f.object.ends_at.try(:strftime, '%F %H:%M %p'), data: { behavior: 'datetime-picker', date_format: "YYYY-MM-DD hh:mm A" }
 
+      = f.text_field :address_1
+      = f.text_field :address_2
       .pull-right
         = link_to :back, class: 'btn btn-default', data: { no_turbolink: true } do
           %i.glyphicon.glyphicon-arrow-left
