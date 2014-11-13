@@ -22,6 +22,10 @@ Implementations MUST treat unknown keys as if they weren't present. However, imp
 
 **updated_at_** *Datetime (ISO8601)* - date and time when the event was last updated
 
+**address_1** *String* - address of the event
+
+**address_2** *String* - address of the event
+
 **event_at** *Datetime (ISO8601)* - ***DEPRECATED*** - date when the event will occur
 
 **group_id** *Integer* - id of the group the event belongs to
@@ -43,6 +47,8 @@ Implementations MUST treat unknown keys as if they weren't present. However, imp
       "event_at": "2014-07-30T11:10:00.000-08:00",
       "created_at": "2014-07-15T11:10:47.388-08:00",
       "updated_at": "2014-07-15T11:59:31.580-08:00",
+      "address_1": "Wood Center",
+      "address_2": "University of Alaska Fairbanks",
       "group_id": 1,
       "group_url": "http://map-post.127.0.0.1.xip.io/groups/1.json",
       "url": "http://map-post.127.0.0.1.xip.io/events/4.json"

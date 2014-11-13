@@ -12,11 +12,11 @@ _None_
 
 ### Example JSON Request
 
-Request URL: 
+Request URL:
 
     http://mappost-api.herokuapp.com/events.json
 
-Response Body: 
+Response Body:
 
     [{
       "id": 4,
@@ -29,6 +29,8 @@ Response Body:
       "event_at": "2014-07-30T11:10:00.000-08:00",
       "created_at": "2014-07-15T11:10:47.388-08:00",
       "updated_at": "2014-07-15T11:16:27.004-08:00",
+      "address_1": "Wood Center",
+      "address_2": "University of Alaska Fairbanks",
       "group_id": 1,
       "group_url": "http://mappost-api.herokuapp.com/groups/1.json",
       "url": "http://mappost-api.herokuapp.com/events/4.json"
@@ -58,6 +60,8 @@ Response Body:
           "title": "Party time!",
           "description": "Testing",
           "event_at": "2014-07-30T11:10:00.000-08:00",
+          "address_1": "Wood Center",
+          "address_2": "University of Alaska Fairbanks",
           "group": {
             "id": 1,
             "name": "Geographic Information Network of Alaska",
@@ -67,7 +71,7 @@ Response Body:
         }
       }]
     }
-    
+
 ## Groups /groups.json
 
 Groups are organizations that can be assigned to events and are usually responsible for organizing an event.
@@ -85,9 +89,9 @@ This endpoint will return an array of group items.  For more information about e
 Request URL:
 
     http://mappost-api.herokuapp.com/groups.json
-    
+
 Response Body:
-    
+
     [{
       "name": "Geographic Information Network of Alaska",
       "description": "Testing 123",
