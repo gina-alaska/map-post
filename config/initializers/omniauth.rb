@@ -6,7 +6,7 @@
       name: "google",
       scope: "userinfo.profile,userinfo.email",
       # leave this out for now for dev purposes
-      # hd: "alaska.edu",
+      hd: "alaska.edu",
       include_granted_scopes: true,
       # scope: "userinfo.profile",
       #image_aspect_ratio: "square",
