@@ -67,3 +67,5 @@ gem "google-api-client"
 gem 'ransack'
 
 gem 'rails_12factor', group: :production
+
+ruby '2.1.5'
