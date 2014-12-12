@@ -44,7 +44,7 @@ class Event < ActiveRecord::Base
   end
 
   def visible?
-    self.visible and not self.user.banned?
+    self.visible and not self.user.banned? and self.ends_at >= 1.day.ago
   end
 
   def to_param

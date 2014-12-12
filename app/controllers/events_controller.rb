@@ -9,8 +9,18 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @q = Event.search(params[:q])
-    @events = @q.result(distinct: true).visible
-    respond_with @events
+    @events = @q.result(distinct: true)
+    respond_to do |format|
+      format.html {
+        @events = @events.visible
+      }
+      format.json {
+        @events = @events.where(ends_at: (6.month.ago..Time.zone.now))
+      }
+      format.geojson {
+        @events = @events.visible
+      }
+    end
   end
 
   # GET /events/1
