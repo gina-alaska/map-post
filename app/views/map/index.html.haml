@@ -3,6 +3,6 @@
   
 :javascript
   $(document).one('map:ready', function(e, container) {
-    geojson = MapLayer.fromConfig({ type: 'geojson', url: '/events.geojson', popup: '<h4>{{title}}</h4><p>{{description}}</p><dl class="dl-horizontal event"><dt>Group</dt><dd><a href="{{group.url}}">{{group.name}}</a></dd><dt>Starts</dt><dd data-date-format>{{starts_at}}</dd><dt>Ends</dt><dd data-date-format>{{ends_at}}</dd></dl><a href="{{url}}">Permalink</a>' });
+    geojson = MapLayer.fromConfig({ type: 'geojson', url: '/events.geojson?visible=true', popup: '<h4>{{title}}</h4><p>{{description}}</p><dl class="dl-horizontal event"><dt>Group</dt><dd><a href="{{group.url}}">{{group.name}}</a></dd><dt>Starts</dt><dd data-date-format>{{starts_at}}</dd><dt>Ends</dt><dd data-date-format>{{ends_at}}</dd></dl><a href="{{url}}">Permalink</a>' });
     geojson.addTo(container.map);
   })

@@ -18,7 +18,7 @@ Property attributes conform to the [Event JSON Spec](event-json-spec.md), some a
 
 Request URL:
 
-    http://map-post.127.0.0.1.xip.io/events/4.json
+    http://map-post.127.0.0.1.xip.io/events/4.json?visible_only=1
 
 Response Body:
 
@@ -38,6 +38,7 @@ Response Body:
         "updated_at": "2014-07-15T11:59:31.580-08:00",
         "address_1": "Wood Center",
         "address_2": "University of Alaska Fairbanks",
+        "visible": true,
         "group_id": 1,
         "group_url": "http://map-post.127.0.0.1.xip.io/groups/1.json",
         "group": {

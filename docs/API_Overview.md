@@ -6,15 +6,15 @@ Events are the primary data element for the application.  They are a record of a
 
 This endpoint will return an array of event items.  For more information about events please see [the event json spec](event-json-spec.md)
 
-### Parameters  
+### URL Parameters  
 
-_None_
+**visible** *boolean* - When set to true only posts that are visible will be returned. Any other value will return all posts from that are newer than 6 months.
 
 ### Example JSON Request
 
 Request URL:
 
-    http://mappost-api.herokuapp.com/events.json
+    http://mappost-api.herokuapp.com/events.json?visible=true
 
 Response Body:
 
@@ -31,6 +31,7 @@ Response Body:
       "updated_at": "2014-07-15T11:16:27.004-08:00",
       "address_1": "Wood Center",
       "address_2": "University of Alaska Fairbanks",
+      "visible": true,
       "group_id": 1,
       "group_url": "http://mappost-api.herokuapp.com/groups/1.json",
       "url": "http://mappost-api.herokuapp.com/events/4.json"
@@ -42,7 +43,7 @@ For documentation about GeoJSON responses please see: http://geojson.org/geojson
 
 Request URL:
 
-    http://mappost-api.herokuapp.com/events.geojson
+    http://mappost-api.herokuapp.com/events.geojson?visible=true
 
 Response Body:
 
