@@ -9,8 +9,12 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @q = Event.search(params[:q])
-    @events = @q.result(distinct: true)
-    @events = @events.visible if params[:visible].present? and params[:visible] == 'true'
+    @events = @q.result(distinct: true).where('ends_at >= ?', 6.months.ago)
+    
+    if params[:visible].present? and params[:visible] == 'true'
+      @events = @events.visible 
+    end
+    
     respond_with @events
   end
 
