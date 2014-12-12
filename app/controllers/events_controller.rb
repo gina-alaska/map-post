@@ -15,7 +15,7 @@ class EventsController < ApplicationController
         @events = @events.visible
       }
       format.json {
-        @events = @events.where(ends_at: (6.month.ago..(Time.zone.now+6.months)))
+        @events = @events.where('ends_at >= ?', 6.months.ago)
       }
       format.geojson {
         @events = @events.visible
