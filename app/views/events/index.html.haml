@@ -15,8 +15,9 @@
   %table.table.table-condensed.table-striped.table-bordered
     %thead
       %tr
-        %th= sort_link @q, :starts_at, 'Dates'
+        %th.col-sm-2= sort_link @q, :starts_at, 'Dates'
         %th= sort_link @q, :title, 'Post Info'
+        %th Visible
         %th= sort_link @q, :reports_count, '# of Reports'
         %th.text-right.col-sm-2 Actions
         
@@ -34,6 +35,7 @@
               = event.group
             %div
               = event.description
+          %td= event.visible? ? 'Yes' : 'No'
           %td= event.reports.size
           %td.text-right{ data: { no_turbolink: true } }
             .btn-group

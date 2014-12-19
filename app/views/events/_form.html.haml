@@ -26,6 +26,10 @@
 
       = f.text_field :address_1
       = f.text_field :address_2
+      
+      - if can? :manage, Event
+        = f.check_box :visible
+        
       .pull-right
         = link_to :back, class: 'btn btn-default', data: { no_turbolink: true } do
           %i.glyphicon.glyphicon-arrow-left
