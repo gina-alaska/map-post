@@ -1,0 +1,3 @@
+Copyright 2014 Will Fisher (will@alaska.edu)
+
+http://choosealicense.com/licenses/no-license/
