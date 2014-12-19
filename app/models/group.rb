@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  has_many :events
+  has_many :events, dependent: :destroy
   belongs_to :user
 
   scope :visible, -> { where(visible: true) }
