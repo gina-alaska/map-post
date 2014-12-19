@@ -10,11 +10,14 @@ This endpoint will return an array of event items.  For more information about e
 
 **visible** *boolean* - When set to true only posts that are visible will be returned. Any other value will return all posts from that are newer than 6 months.
 
+**since** *date* - When a date (YYYY-MM-DD) is provided only posts that have been created or updated since that day are returned
+
 ### Example JSON Request
 
 Request URL:
 
     http://mappost-api.herokuapp.com/events.json?visible=true
+    http://mappost-api.herokuapp.com/events.json?since=2014-12-10
 
 Response Body:
 
