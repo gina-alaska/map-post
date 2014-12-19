@@ -18,6 +18,6 @@ Application for hosting the map-post api data for the UAF Office of Sustainabili
 
 ### 2014-12-19
 
-* Added new since (Date: YYYY-MM-DD) api param for events.{html|json|geojson}.  When added to the url only posts that have been created or updated since the passed in date will be returned.
+* added "since" api url paramater for events.{html|json|geojson} endpoint.  It takes a date in the format of YYYY-MM-DD and filters to only return items that have been created or updated since the passed in date.
 * Added ability for managers to make individual posts not visible.
 * When a group is deleted any associated posts are now deleted as well.
