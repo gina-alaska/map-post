@@ -17,6 +17,7 @@
       %tr
         %th.col-sm-2= sort_link @q, :starts_at, 'Dates'
         %th= sort_link @q, :title, 'Post Info'
+        %th User
         %th Visible
         %th= sort_link @q, :reports_count, '# of Reports'
         %th.text-right.col-sm-2 Actions
@@ -35,6 +36,7 @@
               = event.group
             %div
               = event.description
+          %td= link_to "#{event.user.to_s[0..8]}...", event.user
           %td= event.visible? ? 'Yes' : 'No'
           %td= event.reports.size
           %td.text-right{ data: { no_turbolink: true } }
