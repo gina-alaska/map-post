@@ -11,6 +11,10 @@ class EventsController < ApplicationController
     @q = Event.search(params[:q])
     @events = @q.result(distinct: true).where('ends_at >= ?', 6.months.ago)
     
+    if params[:since].present? 
+      @events = @events.where('updated_at >= ?', Date.parse(params[:since]))
+    end
+    
     if params[:visible].present? and params[:visible] == 'true'
       @events = @events.visible 
     end
