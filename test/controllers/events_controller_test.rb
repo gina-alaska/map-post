@@ -6,13 +6,19 @@ class EventsControllerTest < ActionController::TestCase
     @user = users(:one)
     session[:user_id] = @user.id
   end
-  
+
   test 'should recognize events api route' do
     assert_recognizes({ controller: 'events', action: 'index', format: 'json'}, "/events.json")
   end
 
   test "should get index" do
     get :index
+    assert_response :success
+    assert_not_nil assigns(:events)
+  end
+
+  test "should get index.geojson" do
+    get :index, format: :geojson, visible: true
     assert_response :success
     assert_not_nil assigns(:events)
   end
