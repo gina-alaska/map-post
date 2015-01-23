@@ -10,8 +10,8 @@
         / = f.label :name_or_description_or_email_or_articles_title_cont
         / = f.search_field :name_or_description_or_email_or_articles_title_cont
         %span.input-group-btn
-          = f.submit class: 'btn btn-primary' 
-          
+          = f.submit class: 'btn btn-primary'
+
   %table.table.table-condensed.table-striped.table-bordered
     %thead
       %tr
@@ -21,7 +21,7 @@
         %th Visible
         %th= sort_link @q, :reports_count, '# of Reports'
         %th.text-right.col-sm-2 Actions
-        
+
     %tbody
       - @events.each do |event|
         %tr
@@ -36,7 +36,7 @@
               = event.group
             %div
               = event.description
-          %td= link_to "#{event.user.to_s[0..8]}...", event.user
+          %td= link_to "#{truncate(event.user.to_s, length: 8)}", event.user
           %td= event.visible? ? 'Yes' : 'No'
           %td= event.reports.size
           %td.text-right{ data: { no_turbolink: true } }

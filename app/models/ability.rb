@@ -5,35 +5,32 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     user ||= User.new # guest user (not logged in)
-    
+
     can :read, Event
     can :read, Group
-    
+
     return if user.new_record?
-    
+
     can [:new, :create], Event
-    can [:edit, :update, :destroy], Event do |event|
-      event.user == user
-    end
-    
+    can [:edit, :update, :destroy], Event, { user_id: user.id }
+
     can [:new, :create], Report
-    can [:read, :edit, :update, :destroy], Report do |report|
-      report.user == user
-    end
-    
+    # can [:read, :edit, :update, :destroy], Report do |report|
+    #   report.user == user
+    # end
+
     can [:new, :create], Group
-    can [:edit, :update, :destroy], Group do |group|
-      group.user == user
-    end
-    
+    can [:edit, :update, :destroy], Group, { user_id: user.id }
+
     if user.member?
       can :read, Report
       can :manage, Event
       can :manage, Group
       can :manage, Membership
       can :manage, User
+      can :manage, Report
     end
-    
+
     #   if user.admin?
     #     can :manage, :all
     #   else

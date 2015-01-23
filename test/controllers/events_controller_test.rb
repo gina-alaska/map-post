@@ -47,8 +47,16 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "should update event" do
-    patch :update, id: @event, event: { description: @event.description, event_at: @event.event_at, group_id: @event.group_id, title: @event.title, user_id: @event.user_id, visible: @event.visible }
+    patch :update, id: @event, event: { description: @event.description, event_at: @event.event_at, group_id: @event.group_id, title: @event.title, visible: @event.visible }
     assert_redirected_to event_path(assigns(:event))
+  end
+
+  test "should fail to update event they don't own" do
+    session[:user_id] = users(:two)
+    event = events(:two)
+    patch :update, id: event, event: { description: event.description, event_at: event.event_at, group_id: event.group_id, title: event.title, visible: event.visible }
+    assert_equal 'You are not authorized to access this page.', flash[:alert]
+    assert_redirected_to root_path
   end
 
   test "should destroy event" do

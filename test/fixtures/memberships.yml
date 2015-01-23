@@ -3,7 +3,3 @@
 one:
   user: one
   email: MyString
-
-two:
-  user: two
-  email: MyString
