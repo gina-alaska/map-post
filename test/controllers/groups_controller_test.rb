@@ -6,7 +6,7 @@ class GroupsControllerTest < ActionController::TestCase
     @user = users(:one)
     session[:user_id] = @user.id
   end
-  
+
   test 'should recognize groups api route' do
     assert_recognizes({ controller: 'groups', action: 'index', format: 'json'}, "/groups.json")
   end
@@ -43,6 +43,14 @@ class GroupsControllerTest < ActionController::TestCase
   test "should update group" do
     patch :update, id: @group, group: { description: @group.description, name: @group.name, restricted: @group.restricted, visible: @group.visible }
     assert_redirected_to group_path(assigns(:group))
+  end
+
+  test "should fail to update group they don't own" do
+    session[:user_id] = users(:two)
+    group = groups(:one)
+    patch :update, id: group, group: { description: group.description, name: group.name, restricted: group.restricted, visible: group.visible }
+    assert_equal 'You are not authorized to access this page.', flash[:alert]
+    assert_redirected_to root_path
   end
 
   test "should destroy group" do
