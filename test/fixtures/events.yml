@@ -15,7 +15,17 @@ two:
   description: MyText
   group: one
   user: one
-  visible: false
+  visible: true
   location: POINT(-147.83421993255615 64.85809028478076)
   starts_at: <%= Time.zone.now - 1.month %>
   ends_at: <%= Time.zone.now - 1.day %>
+
+three:
+  title: MyString
+  description: MyText
+  group: one
+  user: two
+  visible: true
+  location: POINT(-147.83421993255615 64.85809028478076)
+  starts_at: <%= Time.zone.now - 1.month %>
+  ends_at: <%= Time.zone.now + 1.month %>

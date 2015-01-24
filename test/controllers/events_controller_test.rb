@@ -59,6 +59,14 @@ class EventsControllerTest < ActionController::TestCase
     assert_redirected_to root_path
   end
 
+  test "a normal user should be able to update event they own" do
+    session[:user_id] = users(:two)
+    event = events(:three)
+    patch :update, id: event, event: { description: event.description, event_at: event.event_at, group_id: event.group_id, title: event.title, visible: event.visible }
+    assert_equal 'Post was successfully updated.', flash[:notice]
+    assert_redirected_to event_path(assigns(:event))
+  end
+
   test "should destroy event" do
     assert_difference('Event.count', -1) do
       delete :destroy, id: @event
