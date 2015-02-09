@@ -12,7 +12,7 @@
 /   .col-lg-4.col-md-5
 /     = render @event
 
-#map{ style: 'height: 400px;' }
+#map{ style: 'height: 400px; margin-bottom: 5px;' }
 = hidden_field_tag :lat, @event.location.lat, id: 'event_lat'
 = hidden_field_tag :lng, @event.location.lng, id: 'event_lng'
 :javascript
@@ -21,4 +21,5 @@
     editor = new EventEditor(container, { lat: '#event_lat', lng: '#event_lng', editable: false })
   })
 
+= render 'hidden_reason', event: @event
 = render @event
