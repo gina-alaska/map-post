@@ -5,7 +5,9 @@ class Event < ActiveRecord::Base
   belongs_to :user
   has_many :reports, dependent: :destroy
 
-  scope :visible, -> { where(visible: true).where('reports_count < 3').includes(:user).where(users: { banned: false }).where('ends_at >= ?', Time.zone.now) }
+  scope :visible, -> {
+    where(visible: true).where('reports_count < 3').includes(:user).where(users: { banned: false }).where('ends_at >= ?', 1.day.ago)
+  }
   scope :recent, -> { where('starts_at <= ?', Time.zone.now + 60.days).order(event_at: :asc) }
 
   validates :title, presence: true
@@ -44,7 +46,7 @@ class Event < ActiveRecord::Base
   end
 
   def visible?
-    visible && reports.count < 3 && !user.banned? && ends_at >= 1.day.ago
+    visible && reports.size < 3 && !user.banned? && ends_at >= 1.day.ago
   end
 
   def to_param
@@ -52,8 +54,12 @@ class Event < ActiveRecord::Base
   end
 
   def hidden_reason
-    if visible
+    if !visible
       'Event was hidden'
+    elsif reports.size > 3
+      "Reported #{reports.count} times"
+    elsif ends_at < 1.day.ago
+      'Event has expired'
     elsif user.banned?
       'User was banned'
     end

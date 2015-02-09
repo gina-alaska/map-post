@@ -37,7 +37,9 @@
             %div
               = event.description
           %td= link_to "#{truncate(event.user.to_s, length: 8)}", event.user
-          %td= event.visible? ? 'Yes' : 'No'
+          %td
+            %abbr{ title: event.hidden_reason }
+              = event.visible? ? 'Yes' : 'No'
           %td= event.reports.size
           %td.text-right{ data: { no_turbolink: true } }
             .btn-group

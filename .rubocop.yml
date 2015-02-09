@@ -9,6 +9,7 @@ AllCops:
     - 'bin/rails'
     - 'bin/rake'
     - 'bin/spring'
+    - 'db/schema.rb'
 
 Style/Encoding:
   Enabled: false
