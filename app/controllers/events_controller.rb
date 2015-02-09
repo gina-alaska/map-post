@@ -10,15 +10,15 @@ class EventsController < ApplicationController
   def index
     @q = Event.search(params[:q])
     @events = @q.result(distinct: true).where('ends_at >= ?', 6.months.ago)
-    
-    if params[:since].present? 
+
+    if params[:since].present?
       @events = @events.where('updated_at >= ?', Date.parse(params[:since]))
     end
-    
-    if params[:visible].present? and params[:visible] == 'true'
-      @events = @events.visible 
+
+    if params[:visible].present? && params[:visible] == 'true'
+      @events = @events.visible
     end
-    
+
     respond_with @events
   end
 
@@ -83,17 +83,18 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      if current_user.member?
-        params.require(:event).permit(:title, :description, :group_id, :visible, :starts_at, :ends_at, :address_1, :address_2, location: [:lat, :lng])
-      else
-        params.require(:event).permit(:title, :description, :group_id, :starts_at, :ends_at, :address_1, :address_2, location: [:lat, :lng])
-      end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    if current_user.member?
+      params.require(:event).permit(:title, :description, :group_id, :visible, :starts_at, :ends_at, :address_1, :address_2, location: [:lat, :lng])
+    else
+      params.require(:event).permit(:title, :description, :group_id, :starts_at, :ends_at, :address_1, :address_2, location: [:lat, :lng])
     end
+  end
 end

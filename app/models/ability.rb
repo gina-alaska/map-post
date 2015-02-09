@@ -12,7 +12,7 @@ class Ability
     return if user.new_record?
 
     can [:new, :create], Event
-    can [:edit, :update, :destroy], Event, { user_id: user.id }
+    can [:edit, :update, :destroy], Event, user_id: user.id
 
     can [:new, :create], Report
     # can [:read, :edit, :update, :destroy], Report do |report|
@@ -20,7 +20,7 @@ class Ability
     # end
 
     can [:new, :create], Group
-    can [:edit, :update, :destroy], Group, { user_id: user.id }
+    can [:edit, :update, :destroy], Group, user_id: user.id
 
     if user.member?
       can :read, Report

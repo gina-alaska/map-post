@@ -1,15 +1,18 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
 # Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
+# gem 'sqlite3'
 gem 'pg'
-group :development do
-  gem "better_errors"
-  gem "binding_of_caller"
-#  gem 'web-console', '2.0.0.beta2'
+group :development, :test do
+  gem 'guard'
+  gem 'guard-minitest'
+  gem 'rubocop', require: false
+  gem 'guard-rubocop'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  #  gem 'web-console', '2.0.0.beta2'
 end
 
 # Use SCSS for stylesheets
@@ -27,7 +30,6 @@ gem 'georuby'
 gem 'bootstrap_form'
 gem 'browser'
 gem 'cancancan', '~> 1.9'
-
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -56,16 +58,15 @@ gem 'unicorn'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-
-gem "haml"
-gem "bower-tools", github: "gina-alaska/bower-tools"
-gem "omniauth"
-gem "omniauth-github"
-gem "omniauth-google-oauth2"
-gem "omniauth-openid"
-gem "google-api-client"
+gem 'haml'
+gem 'bower-tools', github: 'gina-alaska/bower-tools'
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-openid'
+gem 'google-api-client'
 gem 'ransack'
 
 gem 'rails_12factor', group: :production
 
-ruby '2.1.5'
+ruby '2.2.0'

@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
   belongs_to :user
   has_many :reports, dependent: :destroy
 
-  scope :visible, -> { where(visible: true).includes(:user, :reports).where(users: { banned: false }).where('ends_at >= ?', Time.zone.now) }
+  scope :visible, -> { where(visible: true).where('reports_count < 3').includes(:user).where(users: { banned: false }).where('ends_at >= ?', Time.zone.now) }
   scope :recent, -> { where('starts_at <= ?', Time.zone.now + 60.days).order(event_at: :asc) }
 
   validates :title, presence: true
@@ -18,9 +18,9 @@ class Event < ActiveRecord::Base
   # serialize :location
 
   def location=(geom)
-    geometry = Point.from_x_y(geom[:lng],geom[:lat])
+    geometry = Point.from_x_y(geom[:lng], geom[:lat])
 
-    write_attribute(:location, geometry.as_wkt)
+    self[:location] = geometry.as_wkt
   end
 
   def geometry=(geom)
@@ -30,8 +30,8 @@ class Event < ActiveRecord::Base
   def geometry
     return @geom unless @geom.nil?
 
-    if read_attribute(:location).present?
-      @geom = Geometry.from_ewkt(read_attribute(:location))
+    if self[:location].present?
+      @geom = Geometry.from_ewkt(self[:location])
     else
       @geom = Point.new
     end
@@ -44,26 +44,26 @@ class Event < ActiveRecord::Base
   end
 
   def visible?
-    self.visible and not self.user.banned? and self.ends_at >= 1.day.ago
+    visible && reports.count < 3 && !user.banned? && ends_at >= 1.day.ago
   end
 
   def to_param
-    "#{self.id}-#{self.title.parameterize}"
+    "#{id}-#{title.parameterize}"
   end
 
   def hidden_reason
-    if self.visible
-      "Event was hidden"
-    elsif self.user.banned?
-      "User was banned"
+    if visible
+      'Event was hidden'
+    elsif user.banned?
+      'User was banned'
     end
   end
 
   def has_address?
-    self.address_1.present? or self.address_2.present?
+    address_1.present? || address_2.present?
   end
 
   def address
-    [self.address_1, self.address_2].delete_if(&:empty?).join(", ")
+    [address_1, address_2].delete_if(&:empty?).join(', ')
   end
 end

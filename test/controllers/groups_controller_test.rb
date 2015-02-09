@@ -8,21 +8,21 @@ class GroupsControllerTest < ActionController::TestCase
   end
 
   test 'should recognize groups api route' do
-    assert_recognizes({ controller: 'groups', action: 'index', format: 'json'}, "/groups.json")
+    assert_recognizes({ controller: 'groups', action: 'index', format: 'json' }, '/groups.json')
   end
 
-  test "should get index" do
+  test 'should get index' do
     get :index
     assert_response :success
     assert_not_nil assigns(:groups)
   end
 
-  test "should get new" do
+  test 'should get new' do
     get :new
     assert_response :success
   end
 
-  test "should create group" do
+  test 'should create group' do
     assert_difference('Group.count') do
       post :create, group: { description: @group.description, name: @group.name + ' new name', acronym: @group.acronym, restricted: @group.restricted, visible: @group.visible }
     end
@@ -30,17 +30,17 @@ class GroupsControllerTest < ActionController::TestCase
     assert_redirected_to group_path(assigns(:group))
   end
 
-  test "should show group" do
+  test 'should show group' do
     get :show, id: @group
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get :edit, id: @group
     assert_response :success
   end
 
-  test "should update group" do
+  test 'should update group' do
     patch :update, id: @group, group: { description: @group.description, name: @group.name, restricted: @group.restricted, visible: @group.visible }
     assert_redirected_to group_path(assigns(:group))
   end
@@ -53,7 +53,7 @@ class GroupsControllerTest < ActionController::TestCase
     assert_redirected_to root_path
   end
 
-  test "should destroy group" do
+  test 'should destroy group' do
     assert_difference('Group.count', -1) do
       delete :destroy, id: @group
     end

@@ -9,3 +9,18 @@ two:
   event: one
   user: one
   reason: MyText
+
+three:
+  event: reported
+  user: one
+  reason: MyText
+
+four:
+  event: reported
+  user: one
+  reason: MyText
+
+five:
+  event: reported
+  user: one
+  reason: MyText

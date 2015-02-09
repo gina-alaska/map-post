@@ -1,18 +1,17 @@
 class MembershipsController < ApplicationController
   before_action :fetch_membership, only: [:destroy, :show, :edit, :create, :update]
-  
+
   def index
     @members = Membership.all
   end
-  
+
   def show
-    
   end
-  
+
   def new
     @member = Membership.new
   end
-  
+
   def create
     @member = Membership.new(membership_params)
 
@@ -29,7 +28,7 @@ class MembershipsController < ApplicationController
 
   def edit
   end
-  
+
   def update
     respond_to do |format|
       if @member.update(membership_params)
@@ -41,19 +40,19 @@ class MembershipsController < ApplicationController
       end
     end
   end
-  
+
   def destroy
     @member.destroy
     flash[:success] = "#{@member.email} was deleted"
     redirect_to memberships_path
   end
-  
+
   protected
-  
+
   def fetch_membership
     @member = Membership.find(params[:id]) if params[:id].present?
   end
-  
+
   def membership_params
     params.require(:membership).permit(:email)
   end

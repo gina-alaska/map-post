@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     begin
       if signed_in?
-        redirect_to :back, :alert => exception.message
+        redirect_to :back, alert: exception.message
       else
         session[:redirect_back_to] = request.original_url
         redirect_to login_path
@@ -22,9 +22,9 @@ class ApplicationController < ActionController::Base
   def set_device_type
     if request.xhr?
       request.variant = :ajax
-    elsif browser.mobile? or params[:mobile].present?
+    elsif browser.mobile? || params[:mobile].present?
       request.variant = :phone
-    elsif browser.tablet? or params[:tablet].present?
+    elsif browser.tablet? || params[:tablet].present?
       # use phone for now
       request.variant = :phone
     end
