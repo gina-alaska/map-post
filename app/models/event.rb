@@ -55,13 +55,13 @@ class Event < ActiveRecord::Base
 
   def hidden_reason
     if !visible
-      'Event was hidden'
+      'post was hidden'
     elsif reports.size >= 3
-      "Reported #{reports.size} times"
+      "reported #{reports.size} times"
     elsif ends_at < 1.day.ago
-      'Event has expired'
+      'post has expired'
     elsif user.banned?
-      'User was banned'
+      'user was banned'
     end
   end
 

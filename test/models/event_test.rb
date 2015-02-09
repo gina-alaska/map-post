@@ -25,6 +25,6 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test 'should report hidden reason for reports' do
-    assert_equal 'Reported 3 times', events(:reported).hidden_reason
+    assert_equal 'reported 3 times', events(:reported).hidden_reason
   end
 end
