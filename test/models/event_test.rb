@@ -23,4 +23,8 @@ class EventTest < ActiveSupport::TestCase
   test 'should not fetch event with more than 3 reports' do
     refute Event.visible.include?(events(:reported)), 'Found reported event'
   end
+
+  test 'should report hidden reason for reports' do
+    assert_equal 'Reported 3 times', events(:reported).hidden_reason
+  end
 end
