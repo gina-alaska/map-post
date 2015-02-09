@@ -3,7 +3,7 @@ module GinaAuthentication
     extend ActiveSupport::Concern
 
     def create
-      if @auth = Authorization.find_from_hash(auth_hash)
+      if (@auth = Authorization.find_from_hash(auth_hash))
         # Update a user with any new identify information
         @auth.user.update_from_hash!(auth_hash)
       else
