@@ -7,6 +7,8 @@ json.cache! ['v2', event, event.group] do
     json.visible event.visible?
     json.group_id event.group_id
     json.group_url group_url event.group
+    json.set! 'marker-color', '#00f'
+    json.set! 'marker-symbol', 'star'
     json.group do
       json.partial! event.group
     end
