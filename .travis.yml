@@ -8,8 +8,5 @@ before_script:
 - cp config/database.yml.travis config/database.yml
 - psql -c 'create database travis_ci_test;' -U postgres
 notifications:
-  campfire:
-    rooms:
-      secure: fD1kclF+hrPaVy/4Mwm8M/faV0sNs/qPHBpyr/dbLwcDWNcJJ61iZKKAarkviGMGwm2bHg3Uct4t9QNBiwFmwcafuzj03QTKPhj6KgZIWdm2sUn/vas44I5KJZe8SmduKvnRAgVwNRFdCNsObHUd2jgAMAQnQIRqcmpWJhJ/18M=
   slack:
-    secure: Td0sccIww1/h0tJq019ZTjsExIO5Xh+jmd6BL3UV98R8TYsPVVsqLCSgLmSV0NMv90JyDQvTxdVfWIF+MaA2xVnKw1ClJOGBQsQ920hZ+2AcXO+2jL+IGlVSQ0+tIRNw9Q3be1srVugRVs2+8D9I++0mnvMLWkzyT/E5lcpx9Rg=
+    secure: e++P2HGsd+BQxQCxR1j7sg/tQXWp76ZzJlpmTfrdPURgSdSXk288U6mIl185fMoPOFZ8YLJLNk9Mca3dZEu357yaKAjsqAU61Re8r8TRpZVgHeeAVuCqs2x+a/rqpV7NTr5WzeMIfIJirtrVIgVXaamUv2elyg7c24gfYfL1cyM=
